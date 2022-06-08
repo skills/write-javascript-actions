@@ -1,0 +1,78 @@
+name: Step 3, Fix a broken sidebar
+
+# This step triggers after TBD-step-3-event-desc
+# This step sets STEP to 4
+# This step closes <details id=3> and opens <details id=4>
+
+# This will run every time we TBD-step-3-event-desc
+# Reference https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  # Need `contents: read` to checkout the repository
+  # Need `contents: write` to update the step metadata
+  contents: write
+
+env:
+  FIND_FIXING_MESSAGE: Fixing
+  
+jobs:
+
+  get_current_step:
+    name: Check current step number
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - id: get_step
+        run: echo "::set-output name=current_step::$(cat ./.github/script/STEP)"
+    outputs:
+      current_step: ${{ steps.get_step.outputs.current_step }}
+      
+  on_fix_the_sidebar_issue_comment:
+    name: Check if the issue comment is referencing the correct commit ID
+    needs: get_current_step
+    
+    # We will only run this action when:
+    # 1. This repository isn't the template repository
+    # 2. The STEP is currently 2 (see update-step.sh)
+    # Reference https://docs.github.com/en/actions/learn-github-actions/contexts
+    # Reference https://docs.github.com/en/actions/learn-github-actions/expressions
+    if: ${{ github.repository_owner != 'TBD-organization' }} 
+      && needs.get_current_step.outputs.current_step == 3 }}
+
+    # We'll run Ubuntu for performance instead of Mac or Windows
+    runs-on: ubuntu-latest
+
+    steps:
+      # We'll need to check out the repository so that we can edit the README
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Let's get all the branches
+
+      - name: Dump GitHub comment context
+        id: github_comment_step
+        run: echo '${{ toJSON(github.event) }}'
+        
+      - name: Dump GitHub issue context
+        id: github_issue_step
+        run: echo '${{ toJSON(github.event) }}'
+        
+      - name: Check if the isuees comments is referencing the required commit ID
+        if: contains(github.event.head_commit.message, env.FIND_FIXING_MESSAGE)
+        run: echo 'Found _fixing_ message with autolinked issue in the push'
+
+      # Update README to close <details id=3>
+      # and open <details id=4>
+      # and set STEP to '4'
+      - name: Update to step 4
+        run: ./.github/script/update-step.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FROM_STEP: 3
+          TO_STEP: 4
+          BRANCH_NAME: main

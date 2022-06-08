@@ -1,0 +1,78 @@
+name: Step 2, Find a commit in history
+
+# This step triggers after TBD-step-2-event-desc
+# This step sets STEP to 3
+# This step closes <details id=2> and opens <details id=3>
+
+# This will run every time we TBD-step-2-event-desc
+# Reference https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
+on:
+  workflow_dispatch:
+  issue_comment:
+    types: [created, edited]
+  
+permissions:
+  # Need `contents: read` to checkout the repository
+  # Need `contents: write` to update the step metadata
+  contents: write
+  
+env:
+  FIND_COMMIT_ID: f3dcc803ace969b145b318bfbf6a9f3071b322f7
+
+jobs:
+
+  get_current_step:
+    name: Check current step number
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - id: get_step
+        run: echo "::set-output name=current_step::$(cat ./.github/script/STEP)"
+    outputs:
+      current_step: ${{ steps.get_step.outputs.current_step }}
+      
+  on_fix_the_sidebar_issue_comment:
+    name: Check if the issue comment is referencing the correct commit ID
+    needs: get_current_step
+    
+    # We will only run this action when:
+    # 1. This repository isn't the template repository
+    # 2. The STEP is currently 2 (see update-step.sh)
+    # Reference https://docs.github.com/en/actions/learn-github-actions/contexts
+    # Reference https://docs.github.com/en/actions/learn-github-actions/expressions
+    if: ${{ github.repository_owner != 'TBD-organization' }} 
+      && needs.get_current_step.outputs.current_step == 2 }}
+
+    # We'll run Ubuntu for performance instead of Mac or Windows
+    runs-on: ubuntu-latest
+
+    steps:
+      # We'll need to check out the repository so that we can edit the README
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Let's get all the branches
+
+      - name: Dump GitHub comment context
+        id: github_comment_step
+        run: echo '${{ toJSON(github.event.comment) }}'
+        
+      - name: Dump GitHub issue context
+        id: github_issue_step
+        run: echo '${{ toJSON(github.event.issue) }}'
+        
+      - name: Check if the isuees comments is referencing the required commit ID
+        if: contains(github.event.comment.body, env.FIND_COMMIT_ID)
+        run: echo 'Found the reference to required commit in the comment'
+
+      # Update README to close <details id=2>
+      # and open <details id=3>
+      # and set STEP to '3'
+      - name: Update to step 3
+        run: ./.github/script/update-step.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FROM_STEP: 2
+          TO_STEP: 3
+          BRANCH_NAME: main
