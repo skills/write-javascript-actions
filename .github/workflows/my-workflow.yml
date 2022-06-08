@@ -1,0 +1,12 @@
+name: JS Actions
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  action:
+     runs-on: ubuntu-latest
+
+     steps:
+       - uses: actions/checkout@v3
