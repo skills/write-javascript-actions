@@ -14,9 +14,9 @@ on:
   workflow_dispatch:
   
 permissions:
-  # Need `contents: read` to checkout the repository
-  # Need `contents: write` to update the step metadata
   contents: write
+  pull-requests: write 
+  issues: write
 
 jobs:
   get_current_step:
@@ -40,19 +40,35 @@ jobs:
     # 3. This is the first workflow run on the repository
     # Reference https://docs.github.com/en/actions/learn-github-actions/contexts
     # Reference https://docs.github.com/en/actions/learn-github-actions/expressions
-    if: ${{ github.repository_owner != 'InfomagnusOrg' 
-        && needs.get_current_step.outputs.current_step == 0
-        && github.run_number == 1 }}
+    if: ${{ !github.event.repository.is_template }}
 
     # We'll run Ubuntu for performance instead of Mac or Windows
     runs-on: ubuntu-latest
 
     steps:
       # We'll need to check out the repository so that we can edit the README
+     # We'll need to check out the repository so that we can edit the README
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 0 # Let's get all the branches
+
+      # This is required to establish labels
+      # after being created from the template repository
+      - name: Prepare labels
+        run: |
+          echo "Make sure we are on step 0"
+          if [ "$(cat .github/script/STEP)" != 0 ]
+          then
+            echo "Current step is not 0"
+            exit 0
+          fi
+          echo "Create label 1"
+          gh label create "first joke" -d "first joke for lab" -f
+          echo "Create label 2"
+          gh label create "second joke" -d "second joke for lab" -f
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Update README to close <details id=0>
       # and open <details id=1>
@@ -63,10 +79,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           FROM_STEP: 0
           TO_STEP: 1
-
-      # This is required to establish a related history for branches
-      # after being created from the template repository
-      - name: Initialize repository
-        run: ./.github/script/initialize-repository.sh --dry-run=false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
