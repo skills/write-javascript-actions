@@ -82,7 +82,7 @@ _In our case, we will use this one **workflow** file for many things, which lead
 
 📖Read more about [workflows](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/configuring-a-workflow#choosing-the-type-of-actions-for-your-workflow)
 
-<details id=1 closed>
+<details id=1>
 <summary><strong>:zap: Step 1: Initialize a new JavaScript project</strong></summary>
 
 ## On to your development environment
@@ -149,7 +149,7 @@ Once you have the necessary tools installed locally, follow these steps to begin
 
 </details>
   
-<details id=2 closed>
+<details id=2>
 <summary><strong>:zap: Step 2: Configure Your Action</strong></summary>
 
 ### Excellent!
@@ -184,7 +184,7 @@ We will start with using the parameters that are **required** and later implemen
 
 </details>
   
-<details id=3 closed>
+<details id=3>
 <summary><strong>:zap: Step 3: Create the metadata file</strong></summary>
 
 ## Action metadata
@@ -241,7 +241,7 @@ Our action does not require much metadata for it to run correctly. We will not b
 
 </details>
   
-<details id=4 closed>
+<details id=4>
 <summary><strong>:zap: Step 4: Create the JavaScript files for your action</strong></summary>
 
 ## Files? 🤔
@@ -402,7 +402,7 @@ _Don't forget to call the `run()` function._
 
 </details>
   
-<details id=5 closed>
+<details id=5>
 <summary><strong>:zap: Step 5: Add your action to the workflow file</strong></summary>
 
 ### Great job!
@@ -436,7 +436,7 @@ jobs:
 ```
 </details>
   
-<details id=6 closed>
+<details id=6>
 <summary><strong>:zap: Step 6: Trigger the joke action</strong></summary>
 
 ### Great job! 
@@ -451,7 +451,7 @@ Everything is all set up and now we are ready to start laughing 🤣. You will f
  
 </details>
 
-<details id=7 closed>
+<details id=7>
 <summary><strong>:checkered_flag: Finish</strong></summary>
 
 ### Congratulations friend, you've completed this course! :tada:
