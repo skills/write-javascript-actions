@@ -87,7 +87,7 @@ _In our case, we will use this one **workflow** file for many things, which lead
 
 ## On to your development environment
 
-@{{user.login}} our JavaScript actions are going to leverage the [GitHub ToolKit](https://github.com/actions/toolkit) for developing GitHub Actions.
+Our JavaScript actions are going to leverage the [GitHub ToolKit](https://github.com/actions/toolkit) for developing GitHub Actions.
 
 This is an external library that we will install using `npm` which means that you will need [Node.js](https://nodejs.org/) installed.
 
