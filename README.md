@@ -152,6 +152,8 @@ Once you have the necessary tools installed locally, follow these steps to begin
 <details id=2 closed>
 <summary><strong>:zap: Step 2: Configure Your Action</strong></summary>
 
+### Excellent!
+  
 Now that we have the custom action pre-requisites, let is create **joke-action** action.
 
 ### :keyboard: Activity: Configure Your Action
@@ -403,6 +405,8 @@ _Don't forget to call the `run()` function._
 <details id=5 closed>
 <summary><strong>:zap: Step 5: Add your action to the workflow file</strong></summary>
 
+### Great job!
+  
 💡All of the following steps will add the action to the workflow file that’s already in the repo [`my-workflow.yml` file](/.github/workflows/my-workflow.yml)
   
 ### :keyboard: Activity: Edit the custom action at the bottom of the workflow file.
@@ -435,7 +439,8 @@ jobs:
 <details id=6 closed>
 <summary><strong>:zap: Step 6: Trigger the joke action</strong></summary>
 
-Great job! Everything is all set up and now we are ready to start laughing 🤣. You will find you have some joke related labels available to you in this repository. You don't have to use them, any label will trigger our workflow, but it might be easier to follow along with me if you use the labels I suggest.
+### Great job! 
+Everything is all set up and now we are ready to start laughing 🤣. You will find you have some joke related labels available to you in this repository. You don't have to use them, any label will trigger our workflow, but it might be easier to follow along with me if you use the labels I suggest.
 
 ### :keyboard: Trigger a joke
 
