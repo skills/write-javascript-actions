@@ -9,8 +9,9 @@ name: Step 1, Resolve duplicate issues
 
 on:
   workflow_dispatch:
-  issue_comment:
-    types: [created, edited]
+  push:
+    branches:
+      - hello-world
 
 permissions:
   # Need `contents: read` to checkout the repository
@@ -30,8 +31,8 @@ jobs:
     outputs:
       current_step: ${{ steps.get_step.outputs.current_step }}
   
-  on_duplicate_issue_closed:
-    name: Check if duplicate issue is marked as duplicate
+  on_hello_world_branch_created:
+    name: Check if hello-world branch was pushed
     needs: get_current_step
     
     # We will only run this action when:
@@ -46,24 +47,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # We'll need to check out the repository so that we can edit the README
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0 # Let's get all the branches
-
-      - name: Dump GitHub comment context
-        id: github_comment_step
-        run: echo '${{ toJSON(github.event.comment) }}'
-        
-      - name: Dump GitHub issue context
-        id: github_issue_step
-        run: echo '${{ toJSON(github.event.issue) }}'
-        
-      - name: Check if commented issue is closed and marked as duplicate
-        if: ${{ contains(github.event.comment.body, 'Duplicate of') && (github.event.issue.state == 'closed')}}
-        run: echo 'Duplicate issue closed'
-
       # Update README to close <details id=1>
       # and open <details id=2>
       # and set STEP to '2'
