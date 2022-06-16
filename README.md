@@ -110,11 +110,11 @@ Once you have the necessary tools installed locally, follow these steps to begin
 1. Open the **Terminal** (Mac and Linux) or **Command Prompt** (Windows) on your local machine
 2. Clone your Learning Lab repo to your local machine:
    ```shell
-   git clone {{repoUrl}}.git
+   git clone <this repository URL>.git
    ```
 3. Navigate to the folder you just cloned:
    ```shell
-   cd {{ repo }}
+   cd <local folder with cloned repo>
    ```
 4. Create a new branch named `hello-world`. This is the branch we will use to write our first action. **Please do not capitalize letters unless I do, I run case-sensitive checks to make sure I can help you along the way!**
    ```shell
