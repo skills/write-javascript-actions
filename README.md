@@ -444,7 +444,7 @@ Everything is all set up and now we are ready to start laughing 🤣. You will f
 
 ### :keyboard: Trigger a joke
 
-1. Create a new issue in "Issues tab"
+1. Create a new issue in "Issues tab" and save it
 2. Apply the `first-joke` label to the issue
 3. Wait a few seconds and then apply the `second-joke` label to the issue
 4. Check the workflow results on the "Actions tab"
