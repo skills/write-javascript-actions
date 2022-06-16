@@ -81,7 +81,7 @@ jobs:
             exit 0
           fi
           echo "Create issue #1 from file"
-          gh issue create --title "Create Custom Action"
+          gh issue create --title "Create Custom Action" --body "Implement custom action using JavaScript"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
