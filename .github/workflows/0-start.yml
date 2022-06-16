@@ -70,6 +70,21 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      # This is required to create issues
+      # after being created from the template repository
+      - name: Prepare issues
+        run: |
+          echo "Make sure we are on step 0"
+          if [ "$(cat .github/script/STEP)" != 0 ]
+          then
+            echo "Current step is not 0"
+            exit 0
+          fi
+          echo "Create issue #1 from file"
+          gh issue create --title "Create Custom Action"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
       # Update README to close <details id=0>
       # and open <details id=1>
       # and set STEP to '1'
