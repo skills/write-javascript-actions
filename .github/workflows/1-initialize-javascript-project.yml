@@ -1,4 +1,4 @@
-name: Step 1, Resolve duplicate issues
+name: Step 1, Initialize JavaScript Project
 
 # This step triggers after 0-start.yml
 # This step sets STEP to 2
@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - hello-world
+      - main
 
 permissions:
   # Need `contents: read` to checkout the repository
@@ -31,8 +31,8 @@ jobs:
     outputs:
       current_step: ${{ steps.get_step.outputs.current_step }}
   
-  on_hello_world_branch_created:
-    name: Check if hello-world branch was pushed
+  on_commit_contains_required_dependendencies:
+    name: Check if main branch has the required action dependencies
     needs: get_current_step
     
     # We will only run this action when:
@@ -47,10 +47,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Let's get all the branches
+
+      - name: Dump GitHub comment context
+        id: github_comment_step
+        run: echo '${{ toJSON(github.event) }}'
+     
+      # Check if NPM package.json exists in the expected location
+      - name: Check file existence
+        id: check_files
+        uses: andstor/file-existence-action@v1
+        with:
+          files: ".github/actions/joke-action/package.json"
+        
       # Update README to close <details id=1>
       # and open <details id=2>
       # and set STEP to '2'
       - name: Update to step 2
+        if: steps.check_files.outputs.files_exists == 'true'
         run: ./.github/script/update-step.sh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

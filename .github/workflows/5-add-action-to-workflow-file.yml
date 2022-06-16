@@ -1,4 +1,4 @@
-name: Step 3, Fix a broken sidebar
+name: Step 5, Add Action To Workflow File
 
 # This step triggers after TBD-step-3-event-desc
 # This step sets STEP to 4
@@ -17,7 +17,7 @@ permissions:
   contents: write
 
 env:
-  FIND_FIXING_MESSAGE: Fixing
+  EXPECTED_METADATA: ha-ha
   
 jobs:
 
@@ -32,8 +32,8 @@ jobs:
     outputs:
       current_step: ${{ steps.get_step.outputs.current_step }}
       
-  on_fix_the_sidebar_issue_comment:
-    name: Check if the issue comment is referencing the correct commit ID
+  on_workflow_added_with_custom_action:
+    name: Check if workflow is referencing the custom action
     needs: get_current_step
     
     # We will only run this action when:
@@ -42,7 +42,7 @@ jobs:
     # Reference https://docs.github.com/en/actions/learn-github-actions/contexts
     # Reference https://docs.github.com/en/actions/learn-github-actions/expressions
     if: ${{ github.repository_owner != 'TBD-organization' }} 
-      && needs.get_current_step.outputs.current_step == 3 }}
+      && needs.get_current_step.outputs.current_step == 5 }}
 
     # We'll run Ubuntu for performance instead of Mac or Windows
     runs-on: ubuntu-latest
@@ -58,18 +58,18 @@ jobs:
         id: github_comment_step
         run: echo '${{ toJSON(github.event) }}'
         
-      - name: Dump GitHub issue context
-        id: github_issue_step
-        run: echo '${{ toJSON(github.event) }}'
-        
-      - name: Check if the isuees comments is referencing the required commit ID
-        if: contains(github.event.head_commit.message, env.FIND_FIXING_MESSAGE)
-        run: echo 'Found _fixing_ message with autolinked issue in the push'
+      # Check if action.yml file contains metadata
+      - name: Read action file contents
+        id: read_action_yml_file
+        uses: andstor/file-reader-action@v1
+        with:
+          path: ".github/workflows/my-workflow.yml"
 
       # Update README to close <details id=5>
       # and open <details id=6>
       # and set STEP to '6'
       - name: Update to step 6
+        if: (contains(steps.read_action_yml_file.outputs.contents, ${{ env.EXPECTED_METADATA }})
         run: ./.github/script/update-step.sh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

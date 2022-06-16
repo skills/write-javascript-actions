@@ -1,4 +1,4 @@
-name: Step 2, Find a commit in history
+name: Step 2, Configure Your Action
 
 # This step triggers after TBD-step-2-event-desc
 # This step sets STEP to 3
@@ -8,16 +8,14 @@ name: Step 2, Find a commit in history
 # Reference https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
 on:
   workflow_dispatch:
-  issue_comment:
-    types: [created, edited]
+  push:
+    branches:
+      - main
   
 permissions:
   # Need `contents: read` to checkout the repository
   # Need `contents: write` to update the step metadata
   contents: write
-  
-env:
-  FIND_COMMIT_ID: f3dcc803ace969b145b318bfbf6a9f3071b322f7
 
 jobs:
 
@@ -32,8 +30,8 @@ jobs:
     outputs:
       current_step: ${{ steps.get_step.outputs.current_step }}
       
-  on_fix_the_sidebar_issue_comment:
-    name: Check if the issue comment is referencing the correct commit ID
+  on_check_action_file_added:
+    name: Check if the action.yml file was added
     needs: get_current_step
     
     # We will only run this action when:
@@ -56,20 +54,20 @@ jobs:
 
       - name: Dump GitHub comment context
         id: github_comment_step
-        run: echo '${{ toJSON(github.event.comment) }}'
+        run: echo '${{ toJSON(github.event) }}'
         
-      - name: Dump GitHub issue context
-        id: github_issue_step
-        run: echo '${{ toJSON(github.event.issue) }}'
-        
-      - name: Check if the isuees comments is referencing the required commit ID
-        if: contains(github.event.comment.body, env.FIND_COMMIT_ID)
-        run: echo 'Found the reference to required commit in the comment'
+      # Check if NPM package.json exists in the expected location
+      - name: Check file existence
+        id: check_files
+        uses: andstor/file-existence-action@v1
+        with:
+          files: ".github/actions/joke-action/action.yml"
 
       # Update README to close <details id=2>
       # and open <details id=3>
       # and set STEP to '3'
       - name: Update to step 3
+        if: steps.check_files.outputs.files_exists == 'true'
         run: ./.github/script/update-step.sh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
