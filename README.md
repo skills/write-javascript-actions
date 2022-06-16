@@ -116,9 +116,9 @@ Once you have the necessary tools installed locally, follow these steps to begin
    ```shell
    cd <local folder with cloned repo>
    ```
-4. Create a new branch named `joke-action`. This is the branch we will use to write our first action. **Please do not capitalize letters unless I do, I run case-sensitive checks to make sure I can help you along the way!**
+4. We are using branch called `main`. 
    ```shell
-   git switch -c joke-action
+   git switch main
    ```
 5. Create a new folder for our actions files:
    ```shell
@@ -143,7 +143,7 @@ Once you have the necessary tools installed locally, follow these steps to begin
    ```
 10. Push your changes to your repository:
     ```shell
-    git push -u origin joke-action
+    git push
     ```
 11. Wait about 20 seconds then refresh this page for the next step.
 
@@ -152,9 +152,7 @@ Once you have the necessary tools installed locally, follow these steps to begin
 <details id=2 closed>
 <summary><strong>:zap: Step 2: Configure Your Action</strong></summary>
 
-## Enough talk, lets do this!
-
-Now that we know what action metadata is, let's create the metadata for our current **hello-world** action.
+Now that we have the custom action pre-requisites, let is create **joke-action** action.
 
 ### :keyboard: Activity: Configure Your Action
 
@@ -163,29 +161,25 @@ Now that we know what action metadata is, let's create the metadata for our curr
 We will start with using the parameters that are **required** and later implement some optional parameters as our action evolves.
 
 1. Create a new file in: `.github/actions/joke-action/action.yml`
-2. Add the following contents to the `.github/actions/hello-world/action.yml` file:
+2. Add the following contents to the `.github/actions/joke-action/action.yml` file:
    ```yaml
    name: "my joke action"
 
-   description: "say hello with GitHub Actions"
+   description: "use an external API to retrieve and display a joke"
 
    runs:
      using: "node12"
      main: "main.js"
    ```
 3. Save the `action.yml` file
-4. Commit the changes and push them to the `hello-world` branch:
+4. Commit the changes and push them to the `main` branch:
    ```shell
    git add action.yml
    git commit -m 'create action.yml'
    git push
    ```
 5. Wait about 20 seconds then refresh this page for the next step.
-  
 
-We will need to modify step 5 to have the learner create a new branch instead of using an existing branch. `git checkout -b {branch}` 
-At the bottom of these steps, there is a small content section “This will generate a number of files, but I'm spot checking that:”. Let's add this content section without the spot checking wording to explain what installing these dependencies will do. 
-  
 </details>
   
 <details id=3 closed>
@@ -220,9 +214,9 @@ This file defines the following information about your action:
 
 Our action does not require much metadata for it to run correctly. We will not be accepting any inputs, we will however be setting a single output this time.
 
-1. Create the action metadata file `.github/actions/joke-action/action.yml` with the following content:
+1. Update the action metadata file `.github/actions/joke-action/action.yml` with the following content:
    ```yaml
-   name: "external API action"
+   name: "my joke action"
 
    description: "use an external API to retrieve and display a joke"
 
