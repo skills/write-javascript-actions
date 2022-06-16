@@ -444,13 +444,14 @@ Everything is all set up and now we are ready to start laughing 🤣. You will f
 
 ### :keyboard: Trigger a joke
 
-1. Apply the `first-joke` label to the issue #1
-2. Wait a few seconds and then apply the `second-joke` label to this issue
-3. Check the workflow results on the "Actions tab"
+1. Create a new issue in "Issues tab"
+2. Apply the `first-joke` label to the issue
+3. Wait a few seconds and then apply the `second-joke` label to the issue
+4. Check the workflow results on the "Actions tab"
  
 </details>
 
-<details id=7 cloed>
+<details id=7 closed>
 <summary><strong>:checkered_flag: Finish</strong></summary>
 
 ### Congratulations friend, you've completed this course! :tada:
