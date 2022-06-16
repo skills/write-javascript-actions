@@ -116,26 +116,25 @@ Once you have the necessary tools installed locally, follow these steps to begin
    ```shell
    cd <local folder with cloned repo>
    ```
-4. Create a new branch named `hello-world`. This is the branch we will use to write our first action. **Please do not capitalize letters unless I do, I run case-sensitive checks to make sure I can help you along the way!**
+4. Create a new branch named `joke-action`. This is the branch we will use to write our first action. **Please do not capitalize letters unless I do, I run case-sensitive checks to make sure I can help you along the way!**
    ```shell
-   git checkout -b hello-world
+   git switch -c joke-action
    ```
-
 5. Create a new folder for our actions files:
    ```shell
-   mkdir -p .github/actions/hello-world
+   mkdir -p .github/actions/joke-action
    ```
-6. Navigate to the `hello-world` folder you just created:
+6. Navigate to the `joke-action` folder you just created:
    ```shell
-   cd .github/actions/hello-world
+   cd .github/actions/joke-action
    ```
 7. Initialize a new project:
    ```shell
    npm init -y
    ```
-8. Install the **core** dependency from the [GitHub ToolKit](https://github.com/actions/toolkit):
+8. Install the **request**, **request-promise** and **@actions/core** dependencies using `npm` from the [GitHub ToolKit (https://github.com/actions/toolkit):
    ```shell
-   npm install --save @actions/core
+   npm install --save request request-promise @actions/core
    ```
 9. Commit those newly added files,we will remove the need to upload **node_modules** in a later step:
    ```shell
@@ -144,23 +143,46 @@ Once you have the necessary tools installed locally, follow these steps to begin
    ```
 10. Push your changes to your repository:
     ```shell
-    git push -u origin hello-world
+    git push -u origin joke-action
     ```
-
----
-
-I will respond once you have finished.
+11. Wait about 20 seconds then refresh this page for the next step.
 
 </details>
   
 <details id=2 closed>
-<summary><strong>:zap: Step 2: Configure your action</strong></summary>
+<summary><strong>:zap: Step 2: Configure Your Action</strong></summary>
 
-Learning content: 
-Grab content from Action Metadata
-Activity: Activity: configure your second action 
-Replace title of step to “Configure your action”
-(steps 1-10) If we are using GitHub codespaces, we can remove the steps 1, 3, and 4. 
+## Enough talk, lets do this!
+
+Now that we know what action metadata is, let's create the metadata for our current **hello-world** action.
+
+### :keyboard: Activity: Configure Your Action
+
+💡All of the following steps take place inside of the `.github/actions/joke-action` directory.
+
+We will start with using the parameters that are **required** and later implement some optional parameters as our action evolves.
+
+1. Create a new file in: `.github/actions/joke-action/action.yml`
+2. Add the following contents to the `.github/actions/hello-world/action.yml` file:
+   ```yaml
+   name: "my joke action"
+
+   description: "say hello with GitHub Actions"
+
+   runs:
+     using: "node12"
+     main: "main.js"
+   ```
+3. Save the `action.yml` file
+4. Commit the changes and push them to the `hello-world` branch:
+   ```shell
+   git add action.yml
+   git commit -m 'create action.yml'
+   git push
+   ```
+5. Wait about 20 seconds then refresh this page for the next step.
+  
+
 We will need to modify step 5 to have the learner create a new branch instead of using an existing branch. `git checkout -b {branch}` 
 At the bottom of these steps, there is a small content section “This will generate a number of files, but I'm spot checking that:”. Let's add this content section without the spot checking wording to explain what installing these dependencies will do. 
   
@@ -169,61 +191,298 @@ At the bottom of these steps, there is a small content section “This will gene
 <details id=3 closed>
 <summary><strong>:zap: Step 3: Create the metadata file</strong></summary>
 
-Activity: Create the metadata file
-Remove the sentence, “We will not use the joke-output in in this portion of the course. There will be a later step that will rely on this actions output.” 
+## Action metadata
+
+Every GitHub Action that we write needs to be accompanied by a metadata file. This file has a few rules to it, lets outline those now:
+
+- Filename **must** be `action.yml`
+- Required for both Docker container and JavaScript actions
+- Written in YAML syntax
+
+This file defines the following information about your action:
+
+| Parameter   | Description                                                                                                                                            |      Required      |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | :----------------: |
+| Name        | The name of your action. Helps visually identify the actions in a job.                                                                                 | :white_check_mark: |
+| Description | A summary of what your action does.                                                                                                                    | :white_check_mark: |
+| Inputs      | Input parameters allow you to specify data that the action expects to use during runtime. These parameters become environment variables in the runner. |         ❌         |
+| Outputs     | Specifies the data that subsequent actions can use later in the workflow after the action that defines these outputs has run.                          |         ❌         |
+| Runs        | The command to run when the action executes.                                                                                                           | :white_check_mark: |
+| Branding    | You can use a color and Feather icon to create a badge to personalize and distinguish your action in GitHub Marketplace.                               |         ❌         |
+
+---
+
+📖Read more about [Action metadata](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/metadata-syntax-for-github-actions)
+
+### :keyboard: Activity: Create the metadata file
   
+💡All of the following steps take place inside of the `.github/actions/joke-action` directory.
+
+Our action does not require much metadata for it to run correctly. We will not be accepting any inputs, we will however be setting a single output this time.
+
+1. Create the action metadata file `.github/actions/joke-action/action.yml` with the following content:
+   ```yaml
+   name: "external API action"
+
+   description: "use an external API to retrieve and display a joke"
+
+   outputs:
+     joke-output:
+       description: The resulting joke from the icanhazdadjokes API
+
+   runs:
+     using: "node12"
+     main: "main.js"
+   ```
+2. Save the `action.yml` file
+3. Commit the changes and push them to GitHub:
+   ```shell
+   git add action.yml
+   git commit -m 'add metadata for the joke action'
+   git push
+   ```
+4. Wait about 20 seconds then refresh this page for the next step.
+
 </details>
   
 <details id=4 closed>
 <summary><strong>:zap: Step 4: Create the JavaScript files for your action</strong></summary>
 
-Learning content: Use content from Files, fetching a joke, and creating a main entry point for your second action
-Remove reference to second action since we’re only adding one action
-Activity: Create the JavaScript files for your action
- 
+## Files? 🤔
+
+Yes... files... plural. As you probably know, in JavaScript and other programming languages it is common to break your code into modules so that it is easier to read and maintain going forward. Since JavaScript actions are just programs written in JavaScript that run based on a specific trigger we are able to make our action code modular as well.
+
+To do so we will create two files. One of them will contain the logic to reach out to an external API and retrieve a joke for us, the other will call that module and print the joke to the actions console for us. We will be extending this functionality in our third and final action.
+
+### Fetching a joke
+
+**Joke API**
+
+The first file will be `joke.js` and it will fetch our joke for us. We will be using the [icanhazdadjoke API](https://icanhazdadjoke.com/api) for our action. This API does not require any authentication, but it does however that we set a few parameters in the [HTTP headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers). I'll point out what those are when we get to the code, however it is outside of the scope of this course to cover HTTP in any depth.
+
+When we make our request to this API we will get back a JSON Object in the response. That Object looks like this:
+
+```
+{
+  id: '0LuXvkq4Muc',
+  joke: "I knew I shouldn't steal a mixer from work, but it was a whisk I was willing to take.",
+  status: 200
+}
+```
+
+It contains 3 key:value pairs of data that we can use in our own program or service. In our case, we are only interested in the `joke` field.
+
+**Joke Module**
+
+We will create a file named `joke.js` and it will reside in the `.github/action/joke-action` directory.
+
+The joke module will look like this:
+
+```javascript
+const request = require("request-promise");
+
+const options = {
+  method: "GET",
+  uri: "https://icanhazdadjoke.com/",
+  headers: {
+    Accept: "application/json",
+    "User-Agent":
+      "Writing JavaScript action GitHub Learning Lab course.  Visit lab.github.com or to contact us."
+  },
+  json: true
+};
+
+async function getJoke() {
+  const res = await request(options);
+  return res.joke;
+}
+
+module.exports = getJoke;
+```
+
+<details><summary>Need an advanced description of the <code>joke.js</code> source code?</summary>
+We first bring in the `request-promise` library that we installed earlier using `npm`.
+
+Next we define a set of `options` that the `request-promise` library will use when it makes the request.
+
+📖Read more about [request-promise](https://github.com/request/request-promise/)
+
+Inside of the `options` block we add a key named `headers`. This defines the HTTP headers that the **icanhazdadjoke** API expects in each request that comes it's way.
+
+**icanhazdadjoke** cares the most about the keys, **Accept** and **User-Agent**, so we need to make sure we fill them in.
+
+Next we define an **asynchronous JavaScript function** to make the request for us, storing the JSON Object that is returned in a variable named `res`.
+
+Lastly, we `return` the `res.joke` which is only the value associated with the `joke` key of the JSON Object. This value will be random every time our action runs because of how we are interacting with the **icanhazdadjoke** API.
+
+This file finishes up by exporting the newly created function so that we can use it in our `main.js` file.
+  
+</details>
+
+### Creating the main entry point for your action
+
+**Main Module**
+
+We will also create a file named `main.js` that resides inside of the `.github/actions/joke-action` directory.
+
+That file will look like this:
+
+```javascript
+const getJoke = require("./joke");
+const core = require("@actions/core");
+
+async function run() {
+  const joke = await getJoke();
+  console.log(joke);
+  core.setOutput("joke-output", joke);
+}
+
+run();
+```
+
+<details><summary>Need an advanced description of the <code>main.js</code> source code?</summary>
+Like we did in the `joke.js` file, we are first going to bring in our dependencies. Only this time, our dependencies include something we wrote! To do that we simply use `require()` to point to the location of the file we wish to bring in.
+
+We also bring in `@actions/core` so that we can set the output of our action.
+
+Next we write another **asynchronous JavaScript function** that stores the return value of `getJoke()` in a variable called **joke**.
+
+Then we log the joke to the console.
+
+Finally we finish the function with by setting the contents of the joke as the value of the `joke-output` output parameter. We will use this output later in the course.
+_Don't forget to call the `run()` function._
+
+</details>
+  
+### :keyboard: Activity: Creating the JavaScript files for your new action.
+
+1. Create and add the following contents to the `.github/actions/joke-action/joke.js` file:
+
+   ```javascript
+   const request = require("request-promise");
+
+   const options = {
+     method: "GET",
+     uri: "https://icanhazdadjoke.com/",
+     headers: {
+       Accept: "application/json",
+       "User-Agent":
+         "Writing JavaScript action GitHub Learning Lab course.  Visit lab.github.com or to contact us."
+     },
+     json: true
+   };
+
+   async function getJoke() {
+     const res = await request(options);
+     return res.joke;
+   }
+
+   module.exports = getJoke;
+   ```
+
+2. Save the `joke.js` file.
+3. Create and add the following contents to the `.github/actions/joke-action/main.js` file:
+
+   ```javascript
+   const getJoke = require("./joke");
+   const core = require("@actions/core");
+
+   async function run() {
+     const joke = await getJoke();
+     console.log(joke);
+     core.setOutput("joke-output", joke);
+   }
+
+   run();
+   ```
+
+4. Save the `main.js` file.
+5. Commit the changes to this branch and push them to GitHub:
+   ```shell
+   git add joke.js main.js
+   git commit -m 'creating joke.js and main.js'
+   git push
+   ```
+
 </details>
   
 <details id=5 closed>
 <summary><strong>:zap: Step 5: Add your action to the workflow file</strong></summary>
 
-Learning content: Mention to the learner that we need to add the action to the workflow file that’s already in the repo. 
+💡All of the following steps will add the action to the workflow file that’s already in the repo [`my-workflow.yml` file](/.github/workflows/my-workflow.yml)
+  
+### :keyboard: Activity: Edit the custom action at the bottom of the workflow file.
+  
 Activity: Have the leaner add the following to the bottom of their workflow file:
+```yaml
    - name: ha-ha
      uses: ./.github/actions/joke-action
+```
 Here is what the full file should look like (we’re using issues instead of the pull request event  and removing the reference to the hello world action. 
-   - name: JS Actions
-
+```yaml
+- name: JS Actions
 
 on:
   issues:
     types: [labeled]
 
-
 jobs:
   action:
      runs-on: ubuntu-latest
 
-
      steps:
        - uses: actions/checkout@v3
 
-
      	 - name: ha-ha
          uses: ./.github/actions/joke-action
- 
+```
 </details>
   
 <details id=6 closed>
 <summary><strong>:zap: Step 6: Trigger the joke action</strong></summary>
 
-Learning content: New title but use content from here
-Activity: Trigger a joke
-We’re using issues not pull requests as originally instructed
+Great job! Everything is all set up and now we are ready to start laughing 🤣. You will find you have some joke related labels available to you in this repository. You don't have to use them, any label will trigger our workflow, but it might be easier to follow along with me if you use the labels I suggest.
+
+### :keyboard: Trigger a joke
+
+1. Apply the `first-joke` label to the issue #1
+2. Wait a few seconds and then apply the `second-joke` label to this issue
+3. Check the workflow results on the "Actions tab"
  
 </details>
 
---- 
-Great! Go to the [final issue]({{ url }}).
+<details id=7 cloed>
+<summary><strong>:checkered_flag: Finish</strong></summary>
+
+### Congratulations friend, you've completed this course! :tada:
+
+In this course, you've learned a lot about developing custom actions using JavaScript and Actions Toolki.
+
+## Publishing your actions
+
+Publishing your actions is a great way to help others in your team and across the GitHub community. Although actions do not need to be published to be consumed by adding them to the marketplace you make them easier to find.
+
+Some notable actions you will find on the marketplace are:
+
+- [Actions for Discord](https://github.com/marketplace/actions/actions-for-discord)
+- [GitHub Action for Slack](https://github.com/marketplace/actions/github-action-for-slack)
+- [Jekyll action](https://github.com/marketplace/actions/jekyll-action)
+- [Run Jest](https://github.com/marketplace/actions/run-jest)
+
+And that just scratches the surface of the 1600+ and counting actions you will find on the marketplace 😄
+
+📖Follow [this guide](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/publishing-actions-in-github-marketplace#publishing-an-action) to learn how to publish your actions to the GitHub Marketplace
+  
+### What's next?
+
+- We'd love to hear what you thought of this course [in our community forum](https://github.community/c/education/github-learning-lab/34).
+- [Take another GitHub Learn course](https://github.com/githublearn).
+- [Read the GitHub Getting Started docs](https://docs.github.com/en/get-started).
+- To find projects to contribute to, check out [GitHub Explore](https://github.com/explore).
+
+</details>
+
+---
 
 Get help: [Post in our community forum](https://github.community/c/education/github-learning-lab/34) &bull; [Review the GitHub status page](https://www.githubstatus.com/)
 
