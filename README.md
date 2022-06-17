@@ -411,7 +411,6 @@ _Don't forget to call the `run()` function._
   
 ### :keyboard: Activity: Edit the custom action at the bottom of the workflow file.
   
-Activity: Have the leaner add the following to the bottom of their workflow file:
 ```yaml
    - name: ha-ha
      uses: ./.github/actions/joke-action
