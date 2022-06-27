@@ -6,11 +6,8 @@
   Add your open source license, GitHub uses Creative Commons Attribution 4.0 International.
 -->
 
-<img src="https://repository-images.githubusercontent.com/225716723/812b4e80-586d-11ea-88cb-74a437c5dc3b" width=300 align=right>
-
 # GitHub Actions: Writing JavaScript Actions
 
-_Learn how to write your own GitHub JavaScript Action!  This course will empower you to begin automating customized tasks unique to your workflow._
 
 <!--
   <<< Author notes: Start of the course >>>
@@ -21,26 +18,13 @@ _Learn how to write your own GitHub JavaScript Action!  This course will empower
   Do not use quotes on the <details> tag attributes.
 -->
 
-<details id=0 open>
-<summary><strong>:golf: Start</strong></summary>
+<!--step0-->
 
-**To start this course: [<img width="150" alt="Use this template" src="https://user-images.githubusercontent.com/1221423/148581131-555c0fb8-5361-4450-a760-75fa6219a2fc.png">](https://github.com/InfomagnusOrg/github-actions-writing-javascript-actions/generate)**
+Write your own GitHub JavaScript Action and automate customized tasks unique to your workflow.
 
-> We recommend creating a public repository, as private repositories will [use Actions minutes](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions).<br>
-> After you make your own repository, wait about 20 seconds and refresh. I will go to the next step.
-
-Over the duration of this course you will learn the skills needed to begin using and customizing GitHub Actions to fit your unique workflow scenarios.
-
-- **Who is this for**: Developers, GitHub users, users new to Git, students, managers, teams.
-- **What you'll learn**: 
-  - Consume actions within a workflow file
-  - Create custom JavaScript based actions
-  - Publish your newly created action to the marketplace
-  
-- **Prerequisites**: Before you take this course, you may want to go through the following courses:
-  taking the following courses:
-- [Hello, GitHub Actions!](https://lab.github.com/github/hello-github-actions!) to learn the basics of how GitHub Actions work
-- [GitHub Actions: Continuous Integration](https://lab.github.com/githubtraining/github-actions:-continuous-integration) to dive deeper into a workflow file
+- **Who is this for**: Developers, GitHub users, users new to Git, students, managers, and teams.
+- **What you'll learn**: How to consume actions within a workflow file, create custom JavaScript based actions and publish your newly created action to the marketplace.
+- **Prerequisites**: Before you start, you should be familiar with GitHub, GitHub Actions, and Continuous Integration with GitHub Actions. 
   
 ## Projects used
 
@@ -48,7 +32,19 @@ This makes use of the following open source projects. Consider exploring these r
 
 - [GitHub Actions Toolkit](https://github.com/actions/toolkit), a multipurpose JavaScript library for writing actions
 
-</details>
+## How to start this course
+
+1. Above these instructions, right-click **Use this template** and open the link in a new tab.
+   ![Use this template](https://user-images.githubusercontent.com/1221423/169618716-fb17528d-f332-4fc5-a11a-eaa23562665e.png)
+2. In the new tab, follow the prompts to create a new repository.
+   - For owner, choose your personal account or an organization to host the repository.
+   - You must check the Include all branches checkbox when creating your new respository from this template.
+   - We recommend creating a public repository—private repositories will [use Actions minutes](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions).
+   ![Create a new repository](https://user-images.githubusercontent.com/1221423/169618722-406dc508-add4-4074-83f0-c7a7ad87f6f3.png)
+3. After your new repository is created, wait about 20 seconds, then refresh the page. Follow the step-by-step instructions in the new repository's README.
+
+<!--endstep0-->
+
 
 <!--
   <<< Author notes: Step 1 >>>
