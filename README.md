@@ -79,7 +79,7 @@ _In our case, we will use this one **workflow** file for many things, which lead
 📖Read more about [workflows](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/configuring-a-workflow#choosing-the-type-of-actions-for-your-workflow)
 
 <details id=1>
-<summary><strong>:zap: Step 1: Initialize a new JavaScript project</strong></summary>
+<summary><strong> Step 1: Initialize a new JavaScript project</strong></summary>
 
 ## On to your development environment
 
@@ -87,11 +87,11 @@ Our JavaScript actions are going to leverage the [GitHub ToolKit](https://github
 
 This is an external library that we will install using `npm` which means that you will need [Node.js](https://nodejs.org/) installed.
 
-I find writing actions to be easier from a local environment vs trying to do everything right here in the repository. Doing these steps locally allows you to use the editor of your choice so that you have all the extensions and snippets you are used to when writing code.
+Writing actions in a local environment can be easier than trying to do everything right here in the repository. Doing these steps locally allows you to use the editor of your choice so that you have all the extensions and snippets you are familiar with when writing code.
 
-If you do not have a preferred environment then I suggest following along with me exactly as you see on the screen, which means you'll need to install [Visual Studio Code](https://code.visualstudio.com/).
+If you do not have a preferred environment then the suggested method is to follow along exactly as you see on the screen, which means you'll need to install [Visual Studio Code](https://code.visualstudio.com/).
 
-## Don't forget to set up your workstation 😉
+## Don't forget to set up your workstation 
 
 Most of your work going forward will take place away from your Learning Lab repository, so before continuing with the course ensure you have the following installed on your **local machine**.
 
@@ -99,7 +99,7 @@ Most of your work going forward will take place away from your Learning Lab repo
 2. [ ] [Visual Studio Code](https://code.visualstudio.com/) or your editor of choice
 3. [ ] [Git](https://git-scm.com/)
   
-### :keyboard: Activity: Initialize a new JavaScript project
+### :keyboard: Activity 1: Initialize a new JavaScript project
 
 Once you have the necessary tools installed locally, follow these steps to begin creating your first action.
 
@@ -146,13 +146,13 @@ Once you have the necessary tools installed locally, follow these steps to begin
 </details>
   
 <details id=2>
-<summary><strong>:zap: Step 2: Configure Your Action</strong></summary>
+<summary><strong> Step 2: Configure Your Action</strong></summary>
 
 ### Excellent!
   
-Now that we have the custom action pre-requisites, let is create **joke-action** action.
+Now that we have the custom action pre-requisites, let us create **joke-action** action.
 
-### :keyboard: Activity: Configure Your Action
+### :keyboard: Activity 1: Configure Your Action
 
 💡All of the following steps take place inside of the `.github/actions/joke-action` directory.
 
@@ -181,11 +181,11 @@ We will start with using the parameters that are **required** and later implemen
 </details>
   
 <details id=3>
-<summary><strong>:zap: Step 3: Create the metadata file</strong></summary>
+<summary><strong> Step 3: Create the metadata file</strong></summary>
 
 ## Action metadata
 
-Every GitHub Action that we write needs to be accompanied by a metadata file. This file has a few rules to it, lets outline those now:
+Every GitHub Action that we write needs to be accompanied by a metadata file. This file has a few rules to it, as are indicated below:
 
 - Filename **must** be `action.yml`
 - Required for both Docker container and JavaScript actions
@@ -204,9 +204,9 @@ This file defines the following information about your action:
 
 ---
 
-📖Read more about [Action metadata](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/metadata-syntax-for-github-actions)
+Read more about [Action metadata](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/metadata-syntax-for-github-actions)
 
-### :keyboard: Activity: Create the metadata file
+### :keyboard: Activity 1: Create the metadata file
   
 💡All of the following steps take place inside of the `.github/actions/joke-action` directory.
 
@@ -238,11 +238,11 @@ Our action does not require much metadata for it to run correctly. We will not b
 </details>
   
 <details id=4>
-<summary><strong>:zap: Step 4: Create the JavaScript files for your action</strong></summary>
+<summary><strong> Step 4: Create the JavaScript files for your action</strong></summary>
 
-## Files? 🤔
+## Files
 
-Yes... files... plural. As you probably know, in JavaScript and other programming languages it is common to break your code into modules so that it is easier to read and maintain going forward. Since JavaScript actions are just programs written in JavaScript that run based on a specific trigger we are able to make our action code modular as well.
+As you probably know, in JavaScript and other programming languages it is common to break your code into modules so that it is easier to read and maintain going forward. Since JavaScript actions are just programs written in JavaScript that run based on a specific trigger we are able to make our action code modular as well.
 
 To do so we will create two files. One of them will contain the logic to reach out to an external API and retrieve a joke for us, the other will call that module and print the joke to the actions console for us. We will be extending this functionality in our third and final action.
 
@@ -250,8 +250,7 @@ To do so we will create two files. One of them will contain the logic to reach o
 
 **Joke API**
 
-The first file will be `joke.js` and it will fetch our joke for us. We will be using the [icanhazdadjoke API](https://icanhazdadjoke.com/api) for our action. This API does not require any authentication, but it does however that we set a few parameters in the [HTTP headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers). I'll point out what those are when we get to the code, however it is outside of the scope of this course to cover HTTP in any depth.
-
+The first file will be `joke.js` and it will fetch our joke for us. We will be using the [icanhazdadjoke API](https://icanhazdadjoke.com/api) for our action. This API does not require any authentication, but it does however that we set a few parameters in the [HTTP headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers). The necessary information will be provided when we get to the code section. For more information on HTTP headers, see the previously mentioned link. 
 When we make our request to this API we will get back a JSON Object in the response. That Object looks like this:
 
 ```
@@ -262,7 +261,7 @@ When we make our request to this API we will get back a JSON Object in the respo
 }
 ```
 
-It contains 3 key:value pairs of data that we can use in our own program or service. In our case, we are only interested in the `joke` field.
+It contains 3 key/value pairs of data that we can use in our own program or service. In our case, we are only interested in the `joke` field.
 
 **Joke Module**
 
@@ -297,7 +296,7 @@ We first bring in the `request-promise` library that we installed earlier using 
 
 Next we define a set of `options` that the `request-promise` library will use when it makes the request.
 
-📖Read more about [request-promise](https://github.com/request/request-promise/)
+Read more about [request-promise](https://github.com/request/request-promise/)
 
 Inside of the `options` block we add a key named `headers`. This defines the HTTP headers that the **icanhazdadjoke** API expects in each request that comes it's way.
 
@@ -346,7 +345,7 @@ _Don't forget to call the `run()` function._
 
 </details>
   
-### :keyboard: Activity: Creating the JavaScript files for your new action.
+### :keyboard: Activity 1: Creating the JavaScript files for your new action.
 
 1. Create and add the following contents to the `.github/actions/joke-action/joke.js` file:
 
@@ -399,19 +398,19 @@ _Don't forget to call the `run()` function._
 </details>
   
 <details id=5>
-<summary><strong>:zap: Step 5: Add your action to the workflow file</strong></summary>
+<summary><strong> Step 5: Add your action to the workflow file</strong></summary>
 
 ### Great job!
   
 💡All of the following steps will add the action to the workflow file that’s already in the repo [`my-workflow.yml` file](/.github/workflows/my-workflow.yml)
   
-### :keyboard: Activity: Edit the custom action at the bottom of the workflow file.
+### :keyboard: Activity 1: Edit the custom action at the bottom of the workflow file.
   
 ```yaml
    - name: ha-ha
      uses: ./.github/actions/joke-action
 ```
-Here is what the full file should look like (we’re using issues instead of the pull request event  and removing the reference to the hello world action. 
+Here is what the full file should look like (we’re using issues instead of the pull request event and removing the reference to the hello world action.) 
 ```yaml
 - name: JS Actions
 
@@ -432,12 +431,12 @@ jobs:
 </details>
   
 <details id=6>
-<summary><strong>:zap: Step 6: Trigger the joke action</strong></summary>
+<summary><strong> Step 6: Trigger the joke action</strong></summary>
 
 ### Great job! 
-Everything is all set up and now we are ready to start laughing 🤣. You will find you have some joke related labels available to you in this repository. You don't have to use them, any label will trigger our workflow, but it might be easier to follow along with me if you use the labels I suggest.
+Everything is all set up and now we are ready to start laughing. You will find you have some joke related labels available to you in this repository. You don't have to use them, any label will trigger our workflow, but the easiest way to follow along would be to use suggested labels.
 
-### :keyboard: Trigger a joke
+### Trigger a joke
 
 1. Open issue #1 in the "Issues tab"
 2. Apply the `first-joke` label to the issue
@@ -447,15 +446,15 @@ Everything is all set up and now we are ready to start laughing 🤣. You will f
 </details>
 
 <details id=7>
-<summary><strong>:checkered_flag: Finish</strong></summary>
+<summary><strong>Finish</strong></summary>
 
-### Congratulations friend, you've completed this course! :tada:
+### Congratulations, you've completed this course! 
 
-In this course, you've learned a lot about developing custom actions using JavaScript and Actions Toolki.
+In this course, you've learned a lot about developing custom actions using JavaScript and Actions Toolkit.
 
 ## Publishing your actions
 
-Publishing your actions is a great way to help others in your team and across the GitHub community. Although actions do not need to be published to be consumed by adding them to the marketplace you make them easier to find.
+Publishing your actions is a great way to help others in your team and across the GitHub community. Although actions do not need to be published to be consumed, by adding them to the marketplace you make them easier to find.
 
 Some notable actions you will find on the marketplace are:
 
@@ -466,12 +465,12 @@ Some notable actions you will find on the marketplace are:
 
 And that just scratches the surface of the 1600+ and counting actions you will find on the marketplace 😄
 
-📖Follow [this guide](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/publishing-actions-in-github-marketplace#publishing-an-action) to learn how to publish your actions to the GitHub Marketplace
+Follow [this guide](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/publishing-actions-in-github-marketplace#publishing-an-action) to learn how to publish your actions to the GitHub Marketplace
   
 ### What's next?
 
 - We'd love to hear what you thought of this course [in our community forum](https://github.community/c/education/github-learning-lab/34).
-- [Take another GitHub Learn course](https://github.com/githublearn).
+- [Take another GitHub Skills course](https://github.com/githubskills).
 - [Read the GitHub Getting Started docs](https://docs.github.com/en/get-started).
 - To find projects to contribute to, check out [GitHub Explore](https://github.com/explore).
 
