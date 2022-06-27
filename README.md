@@ -79,10 +79,10 @@ Your repository can contain multiple **workflow** files that carry out a wide va
 
 _In our case, we will use this one **workflow** file for many things, which leads us to break this convention for teaching purposes._
 
-📖Read more about [workflows](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/configuring-a-workflow#choosing-the-type-of-actions-for-your-workflow)
+Read more about [workflows](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/configuring-a-workflow#choosing-the-type-of-actions-for-your-workflow)
 
 <details id=1>
-<summary><strong>:zap: Step 1: Initialize a new JavaScript project</strong></summary>
+<summary><strong>Step 1: Initialize a new JavaScript project</strong></summary>
 
 ## On to your development environment
 
@@ -149,7 +149,7 @@ Once you have the necessary tools installed locally, follow these steps to begin
 </details>
   
 <details id=2>
-<summary><strong>:zap: Step 2: Configure Your Action</strong></summary>
+<summary><strong>Step 2: Configure Your Action</strong></summary>
 
 ### Excellent!
   
@@ -184,7 +184,7 @@ We will start with using the parameters that are **required** and later implemen
 </details>
   
 <details id=3>
-<summary><strong>:zap: Step 3: Create the metadata file</strong></summary>
+<summary><strong>Step 3: Create the metadata file</strong></summary>
 
 ## Action metadata
 
@@ -211,7 +211,7 @@ This file defines the following information about your action:
 
 ### :keyboard: Activity: Create the metadata file
   
-💡All of the following steps take place inside of the `.github/actions/joke-action` directory.
+All of the following steps take place inside of the `.github/actions/joke-action` directory.
 
 Our action does not require much metadata for it to run correctly. We will not be accepting any inputs, we will however be setting a single output this time.
 
@@ -241,7 +241,7 @@ Our action does not require much metadata for it to run correctly. We will not b
 </details>
   
 <details id=4>
-<summary><strong>:zap: Step 4: Create the JavaScript files for your action</strong></summary>
+<summary><strong>Step 4: Create the JavaScript files for your action</strong></summary>
 
 ## Files
 
@@ -300,7 +300,7 @@ We first bring in the `request-promise` library that we installed earlier using 
 
 Next we define a set of `options` that the `request-promise` library will use when it makes the request.
 
-📖Read more about [request-promise](https://github.com/request/request-promise/)
+Read more about [request-promise](https://github.com/request/request-promise/)
 
 Inside of the `options` block we add a key named `headers`. This defines the HTTP headers that the **icanhazdadjoke** API expects in each request that comes it's way.
 
@@ -402,14 +402,15 @@ _Don't forget to call the `run()` function._
 </details>
   
 <details id=5>
-<summary><strong>:zap: Step 5: Add your action to the workflow file</strong></summary>
+<summary><strong>Step 5: Add your action to the workflow file</strong></summary>
 
 ### Great job!
   
 All of the following steps will add the action to the workflow file that’s already in the repo [`my-workflow.yml` file](/.github/workflows/my-workflow.yml)
   
 ### :keyboard: Activity: Edit the custom action at the bottom of the workflow file.
-  
+
+1. Edit the custom acton as you see below.
 ```yaml
    - name: ha-ha
      uses: ./.github/actions/joke-action
@@ -435,10 +436,10 @@ jobs:
 </details>
   
 <details id=6>
-<summary><strong>:zap: Step 6: Trigger the joke action</strong></summary>
+<summary><strong>Step 6: Trigger the joke action</strong></summary>
 
 ### Great job! 
-Everything is all set up and now we are ready to start laughing 🤣. You will find you have some joke related labels available to you in this repository. You don't have to use them, any label will trigger our workflow, but the easiest way to follow along would be to use suggested labels.
+Everything is all set up and now we are ready to start laughing. You will find you have some joke related labels available to you in this repository. You don't have to use them, any label will trigger our workflow, but the easiest way to follow along would be to use suggested labels.
 
 ### :keyboard: Trigger a joke
 
@@ -450,7 +451,7 @@ Everything is all set up and now we are ready to start laughing 🤣. You will f
 </details>
 
 <details id=7>
-<summary><strong>:checkered_flag: Finish</strong></summary>
+<summary><strong>Finish</strong></summary>
 
 ### Congratulations friend, you've completed this course! :tada:
 
