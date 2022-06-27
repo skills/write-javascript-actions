@@ -94,7 +94,7 @@ We find writing actions to be easier from a local environment vs trying to do ev
 
 If you do not have a preferred environment then we suggest following along exactly as you see on the screen, which means you'll need to install [Visual Studio Code](https://code.visualstudio.com/).
 
-## Don't forget to set up your workstation 😉
+## Don't forget to set up your workstation
 
 Most of your work going forward will take place away from your Skills repository, so before continuing with the course ensure you have the following installed on your **local machine**.
 
@@ -157,7 +157,7 @@ Now that we have the custom action pre-requisites, let us create **joke-action**
 
 ### :keyboard: Activity: Configure Your Action
 
-💡All of the following steps take place inside of the `.github/actions/joke-action` directory.
+All of the following steps take place inside of the `.github/actions/joke-action` directory.
 
 We will start with using the parameters that are **required** and later implement some optional parameters as our action evolves.
 
@@ -243,7 +243,7 @@ Our action does not require much metadata for it to run correctly. We will not b
 <details id=4>
 <summary><strong>:zap: Step 4: Create the JavaScript files for your action</strong></summary>
 
-## Files 🤔
+## Files
 
 As you probably know, in JavaScript and other programming languages it is common to break your code into modules so that it is easier to read and maintain going forward. Since JavaScript actions are just programs written in JavaScript that run based on a specific trigger we are able to make our action code modular as well.
 
@@ -406,7 +406,7 @@ _Don't forget to call the `run()` function._
 
 ### Great job!
   
-💡All of the following steps will add the action to the workflow file that’s already in the repo [`my-workflow.yml` file](/.github/workflows/my-workflow.yml)
+All of the following steps will add the action to the workflow file that’s already in the repo [`my-workflow.yml` file](/.github/workflows/my-workflow.yml)
   
 ### :keyboard: Activity: Edit the custom action at the bottom of the workflow file.
   
@@ -467,7 +467,7 @@ Some notable actions you will find on the marketplace are:
 - [Jekyll action](https://github.com/marketplace/actions/jekyll-action)
 - [Run Jest](https://github.com/marketplace/actions/run-jest)
 
-And that just scratches the surface of the 1600+ and counting actions you will find on the marketplace 😄
+And that just scratches the surface of the 1600+ and counting actions you will find on the marketplace 
 
 📖Follow [this guide](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/publishing-actions-in-github-marketplace#publishing-an-action) to learn how to publish your actions to the GitHub Marketplace
   
