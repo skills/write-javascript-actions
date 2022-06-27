@@ -27,18 +27,17 @@ _Learn how to write your own GitHub JavaScript Action!  This course will empower
 **To start this course: [<img width="150" alt="Use this template" src="https://user-images.githubusercontent.com/1221423/148581131-555c0fb8-5361-4450-a760-75fa6219a2fc.png">](https://github.com/InfomagnusOrg/github-actions-writing-javascript-actions/generate)**
 
 > We recommend creating a public repository, as private repositories will [use Actions minutes](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions).<br>
-> After you make your own repository, wait about 20 seconds and refresh. I will go to the next step.
+> After you make your own repository, wait about 20 seconds and refresh.
 
 Over the duration of this course you will learn the skills needed to begin using and customizing GitHub Actions to fit your unique workflow scenarios.
 
-- **Who is this for**: Developers, GitHub users, users new to Git, students, managers, teams.
+- **Who is this for**: Developers, GitHub users, users new to Git, students, managers, and for teams.
 - **What you'll learn**: 
   - Consume actions within a workflow file
   - Create custom JavaScript based actions
   - Publish your newly created action to the marketplace
   
-- **Prerequisites**: Before you take this course, you may want to go through the following courses:
-  taking the following courses:
+**Prerequisites**: Before you take this course, you may want to go through the following courses:
 - [Hello, GitHub Actions!](https://lab.github.com/github/hello-github-actions!) to learn the basics of how GitHub Actions work
 - [GitHub Actions: Continuous Integration](https://lab.github.com/githubtraining/github-actions:-continuous-integration) to dive deeper into a workflow file
   
@@ -58,7 +57,7 @@ This makes use of the following open source projects. Consider exploring these r
   Encourage users to open new tabs for steps!
   TBD-step-1-notes.
 -->
-### Welcome to this Learning Lab course about Actions where you will build the following:
+### Welcome to this Skills course about Actions where you will build the following:
 
 - ![screenshot of a pull request in the course with instructions on how to fetch a joke from the API, a second screenshot of a workflow running and outputting the joke: "Guy told me today he did not know what cloning is. I told him, that makes 2 of us."](https://user-images.githubusercontent.com/16547949/76105870-cce3a380-5fa3-11ea-8882-7138319b4100.png)
 
@@ -91,13 +90,13 @@ Our JavaScript actions are going to leverage the [GitHub ToolKit](https://github
 
 This is an external library that we will install using `npm` which means that you will need [Node.js](https://nodejs.org/) installed.
 
-I find writing actions to be easier from a local environment vs trying to do everything right here in the repository. Doing these steps locally allows you to use the editor of your choice so that you have all the extensions and snippets you are used to when writing code.
+We find writing actions to be easier from a local environment vs trying to do everything right here in the repository. Doing these steps locally allows you to use the editor of your choice so that you have all the extensions and snippets you are used to when writing code.
 
-If you do not have a preferred environment then I suggest following along with me exactly as you see on the screen, which means you'll need to install [Visual Studio Code](https://code.visualstudio.com/).
+If you do not have a preferred environment then we suggest following along exactly as you see on the screen, which means you'll need to install [Visual Studio Code](https://code.visualstudio.com/).
 
 ## Don't forget to set up your workstation 😉
 
-Most of your work going forward will take place away from your Learning Lab repository, so before continuing with the course ensure you have the following installed on your **local machine**.
+Most of your work going forward will take place away from your Skills repository, so before continuing with the course ensure you have the following installed on your **local machine**.
 
 1. [ ] [Node.js](https://nodejs.org)
 2. [ ] [Visual Studio Code](https://code.visualstudio.com/) or your editor of choice
@@ -108,7 +107,7 @@ Most of your work going forward will take place away from your Learning Lab repo
 Once you have the necessary tools installed locally, follow these steps to begin creating your first action.
 
 1. Open the **Terminal** (Mac and Linux) or **Command Prompt** (Windows) on your local machine
-2. Clone your Learning Lab repo to your local machine:
+2. Clone your Skills repo to your local machine:
    ```shell
    git clone <this repository URL>.git
    ```
@@ -154,7 +153,7 @@ Once you have the necessary tools installed locally, follow these steps to begin
 
 ### Excellent!
   
-Now that we have the custom action pre-requisites, let is create **joke-action** action.
+Now that we have the custom action pre-requisites, let us create **joke-action** action.
 
 ### :keyboard: Activity: Configure Your Action
 
@@ -189,11 +188,11 @@ We will start with using the parameters that are **required** and later implemen
 
 ## Action metadata
 
-Every GitHub Action that we write needs to be accompanied by a metadata file. This file has a few rules to it, lets outline those now:
+Every GitHub Action that we write needs to be accompanied by a metadata file. This file has a few rules to it as are indicated below:
 
-- Filename **must** be `action.yml`
-- Required for both Docker container and JavaScript actions
-- Written in YAML syntax
+- Filename **must** be `action.yml`.
+- Required for both Docker container and JavaScript actions.
+- Written in YAML syntax.
 
 This file defines the following information about your action:
 
@@ -244,9 +243,9 @@ Our action does not require much metadata for it to run correctly. We will not b
 <details id=4>
 <summary><strong>:zap: Step 4: Create the JavaScript files for your action</strong></summary>
 
-## Files? 🤔
+## Files 🤔
 
-Yes... files... plural. As you probably know, in JavaScript and other programming languages it is common to break your code into modules so that it is easier to read and maintain going forward. Since JavaScript actions are just programs written in JavaScript that run based on a specific trigger we are able to make our action code modular as well.
+As you probably know, in JavaScript and other programming languages it is common to break your code into modules so that it is easier to read and maintain going forward. Since JavaScript actions are just programs written in JavaScript that run based on a specific trigger we are able to make our action code modular as well.
 
 To do so we will create two files. One of them will contain the logic to reach out to an external API and retrieve a joke for us, the other will call that module and print the joke to the actions console for us. We will be extending this functionality in our third and final action.
 
@@ -254,7 +253,7 @@ To do so we will create two files. One of them will contain the logic to reach o
 
 **Joke API**
 
-The first file will be `joke.js` and it will fetch our joke for us. We will be using the [icanhazdadjoke API](https://icanhazdadjoke.com/api) for our action. This API does not require any authentication, but it does however that we set a few parameters in the [HTTP headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers). I'll point out what those are when we get to the code, however it is outside of the scope of this course to cover HTTP in any depth.
+The first file will be `joke.js` and it will fetch our joke for us. We will be using the [icanhazdadjoke API](https://icanhazdadjoke.com/api) for our action. This API does not require any authentication, but it does however that we set a few parameters in the [HTTP headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers). We need to point out what those are when we get to the code, however it is outside of the scope of this course to cover HTTP in any depth.
 
 When we make our request to this API we will get back a JSON Object in the response. That Object looks like this:
 
@@ -266,7 +265,7 @@ When we make our request to this API we will get back a JSON Object in the respo
 }
 ```
 
-It contains 3 key:value pairs of data that we can use in our own program or service. In our case, we are only interested in the `joke` field.
+It contains 3 key/value pairs of data that we can use in our own program or service. In our case, we are only interested in the `joke` field.
 
 **Joke Module**
 
@@ -283,7 +282,7 @@ const options = {
   headers: {
     Accept: "application/json",
     "User-Agent":
-      "Writing JavaScript action GitHub Learning Lab course.  Visit lab.github.com or to contact us."
+      "Writing JavaScript action GitHub Skills course.  Visit lab.github.com or to contact us."
   },
   json: true
 };
@@ -363,7 +362,7 @@ _Don't forget to call the `run()` function._
      headers: {
        Accept: "application/json",
        "User-Agent":
-         "Writing JavaScript action GitHub Learning Lab course.  Visit lab.github.com or to contact us."
+         "Writing JavaScript action GitHub Skills course.  Visit lab.github.com or to contact us."
      },
      json: true
    };
@@ -415,7 +414,7 @@ _Don't forget to call the `run()` function._
    - name: ha-ha
      uses: ./.github/actions/joke-action
 ```
-Here is what the full file should look like (we’re using issues instead of the pull request event  and removing the reference to the hello world action. 
+Here is what the full file should look like (we’re using issues instead of the pull request event and removing the reference to the hello world action). 
 ```yaml
 - name: JS Actions
 
@@ -439,7 +438,7 @@ jobs:
 <summary><strong>:zap: Step 6: Trigger the joke action</strong></summary>
 
 ### Great job! 
-Everything is all set up and now we are ready to start laughing 🤣. You will find you have some joke related labels available to you in this repository. You don't have to use them, any label will trigger our workflow, but it might be easier to follow along with me if you use the labels I suggest.
+Everything is all set up and now we are ready to start laughing 🤣. You will find you have some joke related labels available to you in this repository. You don't have to use them, any label will trigger our workflow, but the easiest way to follow along would be to use suggested labels.
 
 ### :keyboard: Trigger a joke
 
@@ -455,11 +454,11 @@ Everything is all set up and now we are ready to start laughing 🤣. You will f
 
 ### Congratulations friend, you've completed this course! :tada:
 
-In this course, you've learned a lot about developing custom actions using JavaScript and Actions Toolki.
+In this course, you've learned a lot about developing custom actions using JavaScript and Actions Toolkit.
 
 ## Publishing your actions
 
-Publishing your actions is a great way to help others in your team and across the GitHub community. Although actions do not need to be published to be consumed by adding them to the marketplace you make them easier to find.
+Publishing your actions is a great way to help others in your team and across the GitHub community. Although actions do not need to be published, to be consumed by adding them to the marketplace you make them easier to find.
 
 Some notable actions you will find on the marketplace are:
 
@@ -475,7 +474,7 @@ And that just scratches the surface of the 1600+ and counting actions you will f
 ### What's next?
 
 - We'd love to hear what you thought of this course [in our community forum](https://github.community/c/education/github-learning-lab/34).
-- [Take another GitHub Learn course](https://github.com/githublearn).
+- [Take another GitHub Skills course](https://github.com/githublearn).
 - [Read the GitHub Getting Started docs](https://docs.github.com/en/get-started).
 - To find projects to contribute to, check out [GitHub Explore](https://github.com/explore).
 
