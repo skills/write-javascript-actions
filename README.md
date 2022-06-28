@@ -25,7 +25,7 @@ Write your own GitHub JavaScript Action and automate customized tasks unique to 
 - **Who is this for**: Developers, GitHub users, users new to Git, students, managers, and for teams.
 - **What you'll learn**: How to consume actions within a workflow file, create custom JavaScript based actions and publish your newly created action to the marketplace.
 - **Prerequisites**: Before you start, you should be familiar with GitHub, GitHub Actions, and Continuous Integration with GitHub Actions.
-- **How long**: TBD : Time to take course needs to be added 
+- **How long**: This course is 6 steps long and takes about TBD hours to be completed. 
   
 ## Projects used
 
