@@ -54,7 +54,7 @@ This makes use of the following open source projects. Consider exploring these r
   Encourage users to open new tabs for steps!
   TBD-step-1-notes.
 -->
-### Welcome to this Learning Lab course about Actions where you will build the following:
+### Welcome to this Skills course about Actions where you will build the following:
 
 - ![screenshot of a pull request in the course with instructions on how to fetch a joke from the API, a second screenshot of a workflow running and outputting the joke: "Guy told me today he did not know what cloning is. I told him, that makes 2 of us."](https://user-images.githubusercontent.com/16547949/76105870-cce3a380-5fa3-11ea-8882-7138319b4100.png)
 
@@ -76,7 +76,7 @@ Your repository can contain multiple **workflow** files that carry out a wide va
 
 _In our case, we will use this one **workflow** file for many things, which leads us to break this convention for teaching purposes._
 
-📖Read more about [workflows](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/configuring-a-workflow#choosing-the-type-of-actions-for-your-workflow)
+Read more about [workflows](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/configuring-a-workflow#choosing-the-type-of-actions-for-your-workflow)
 
 <details id=1>
 <summary><strong> Step 1: Initialize a new JavaScript project</strong></summary>
@@ -93,7 +93,7 @@ If you do not have a preferred environment then the suggested method is to follo
 
 ## Don't forget to set up your workstation 
 
-Most of your work going forward will take place away from your Learning Lab repository, so before continuing with the course ensure you have the following installed on your **local machine**.
+Most of your work going forward will take place away from your Skills repository, so before continuing with the course ensure you have the following installed on your **local machine**.
 
 1. [ ] [Node.js](https://nodejs.org)
 2. [ ] [Visual Studio Code](https://code.visualstudio.com/) or your editor of choice
@@ -104,7 +104,7 @@ Most of your work going forward will take place away from your Learning Lab repo
 Once you have the necessary tools installed locally, follow these steps to begin creating your first action.
 
 1. Open the **Terminal** (Mac and Linux) or **Command Prompt** (Windows) on your local machine
-2. Clone your Learning Lab repo to your local machine:
+2. Clone your Skills repo to your local machine:
    ```shell
    git clone <this repository URL>.git
    ```
@@ -154,7 +154,7 @@ Now that we have the custom action pre-requisites, let us create **joke-action**
 
 ### :keyboard: Activity 1: Configure Your Action
 
-💡All of the following steps take place inside of the `.github/actions/joke-action` directory.
+All of the following steps take place inside of the `.github/actions/joke-action` directory.
 
 We will start with using the parameters that are **required** and later implement some optional parameters as our action evolves.
 
@@ -208,7 +208,7 @@ Read more about [Action metadata](https://help.github.com/en/actions/automating-
 
 ### :keyboard: Activity 1: Create the metadata file
   
-💡All of the following steps take place inside of the `.github/actions/joke-action` directory.
+All of the following steps take place inside of the `.github/actions/joke-action` directory.
 
 Our action does not require much metadata for it to run correctly. We will not be accepting any inputs, we will however be setting a single output this time.
 
@@ -278,7 +278,7 @@ const options = {
   headers: {
     Accept: "application/json",
     "User-Agent":
-      "Writing JavaScript action GitHub Learning Lab course.  Visit lab.github.com or to contact us."
+      "Writing JavaScript action GitHub Skills course."
   },
   json: true
 };
@@ -358,7 +358,7 @@ _Don't forget to call the `run()` function._
      headers: {
        Accept: "application/json",
        "User-Agent":
-         "Writing JavaScript action GitHub Learning Lab course.  Visit lab.github.com or to contact us."
+         "Writing JavaScript action GitHub Skills course."
      },
      json: true
    };
@@ -402,7 +402,7 @@ _Don't forget to call the `run()` function._
 
 ### Great job!
   
-💡All of the following steps will add the action to the workflow file that’s already in the repo [`my-workflow.yml` file](/.github/workflows/my-workflow.yml)
+All of the following steps will add the action to the workflow file that’s already in the repo [`my-workflow.yml` file](/.github/workflows/my-workflow.yml)
   
 ### :keyboard: Activity 1: Edit the custom action at the bottom of the workflow file.
   
@@ -463,7 +463,7 @@ Some notable actions you will find on the marketplace are:
 - [Jekyll action](https://github.com/marketplace/actions/jekyll-action)
 - [Run Jest](https://github.com/marketplace/actions/run-jest)
 
-And that just scratches the surface of the 1600+ and counting actions you will find on the marketplace 😄
+And that just scratches the surface of the 1600+ and counting actions you will find on the marketplace 
 
 Follow [this guide](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/publishing-actions-in-github-marketplace#publishing-an-action) to learn how to publish your actions to the GitHub Marketplace
   
