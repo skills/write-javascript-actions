@@ -20,11 +20,25 @@
 
 <!--step0-->
 
+<details id=0 open>
+<summary><strong>:golf: Start</strong></summary>
+
+**To start this course: [<img width="150" alt="Use this template" src="https://user-images.githubusercontent.com/1221423/148581131-555c0fb8-5361-4450-a760-75fa6219a2fc.png">](https://github.com/InfomagnusOrg/github-actions-writing-javascript-actions/generate)**
+
+> We recommend creating a public repository, as private repositories will [use Actions minutes](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions).<br>
+> After you make your own repository, wait about 20 seconds and refresh.
+
 Write your own GitHub JavaScript Action and automate customized tasks unique to your workflow.
 
-- **Who is this for**: Developers, GitHub users, users new to Git, students, managers, and teams.
-- **What you'll learn**: How to consume actions within a workflow file, create custom JavaScript based actions and publish your newly created action to the marketplace.
-- **Prerequisites**: Before you start, you should be familiar with GitHub, GitHub Actions, and Continuous Integration with GitHub Actions. 
+- **Who is this for**: Developers, GitHub users, users new to Git, students, managers, and for teams.
+- **What you'll learn**: 
+  - Consume actions within a workflow file
+  - Create custom JavaScript based actions
+  - Publish your newly created action to the marketplace
+  
+**Prerequisites**: Before you take this course, you may want to go through the following courses:
+- [Hello, GitHub Actions!](https://lab.github.com/github/hello-github-actions!) to learn the basics of how GitHub Actions work
+- [GitHub Actions: Continuous Integration](https://lab.github.com/githubtraining/github-actions:-continuous-integration) to dive deeper into a workflow file
   
 ## Projects used
 
@@ -79,6 +93,7 @@ _In our case, we will use this one **workflow** file for many things, which lead
 Read more about [workflows](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/configuring-a-workflow#choosing-the-type-of-actions-for-your-workflow)
 
 <details id=1>
+
 <summary><strong> Step 1: Initialize a new JavaScript project</strong></summary>
 
 ## On to your development environment
@@ -87,11 +102,11 @@ Our JavaScript actions are going to leverage the [GitHub ToolKit](https://github
 
 This is an external library that we will install using `npm` which means that you will need [Node.js](https://nodejs.org/) installed.
 
-Writing actions in a local environment can be easier than trying to do everything right here in the repository. Doing these steps locally allows you to use the editor of your choice so that you have all the extensions and snippets you are familiar with when writing code.
+We find writing actions to be easier from a local environment vs trying to do everything right here in the repository. Doing these steps locally allows you to use the editor of your choice so that you have all the extensions and snippets you are used to when writing code.
 
-If you do not have a preferred environment then the suggested method is to follow along exactly as you see on the screen, which means you'll need to install [Visual Studio Code](https://code.visualstudio.com/).
+If you do not have a preferred environment then we suggest following along exactly as you see on the screen, which means you'll need to install [Visual Studio Code](https://code.visualstudio.com/).
 
-## Don't forget to set up your workstation 
+## Don't forget to set up your workstation
 
 Most of your work going forward will take place away from your Skills repository, so before continuing with the course ensure you have the following installed on your **local machine**.
 
@@ -187,9 +202,9 @@ We will start with using the parameters that are **required** and later implemen
 
 Every GitHub Action that we write needs to be accompanied by a metadata file. This file has a few rules to it, as are indicated below:
 
-- Filename **must** be `action.yml`
-- Required for both Docker container and JavaScript actions
-- Written in YAML syntax
+- Filename **must** be `action.yml`.
+- Required for both Docker container and JavaScript actions.
+- Written in YAML syntax.
 
 This file defines the following information about your action:
 
@@ -250,7 +265,9 @@ To do so we will create two files. One of them will contain the logic to reach o
 
 **Joke API**
 
-The first file will be `joke.js` and it will fetch our joke for us. We will be using the [icanhazdadjoke API](https://icanhazdadjoke.com/api) for our action. This API does not require any authentication, but it does however that we set a few parameters in the [HTTP headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers). The necessary information will be provided when we get to the code section. For more information on HTTP headers, see the previously mentioned link. 
+
+The first file will be `joke.js` and it will fetch our joke for us. We will be using the [icanhazdadjoke API](https://icanhazdadjoke.com/api) for our action. This API does not require any authentication, but it does however that we set a few parameters in the [HTTP headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers). We need to point out what those are when we get to the code, however it is outside of the scope of this course to cover HTTP in any depth.
+
 When we make our request to this API we will get back a JSON Object in the response. That Object looks like this:
 
 ```
@@ -405,12 +422,14 @@ _Don't forget to call the `run()` function._
 All of the following steps will add the action to the workflow file that’s already in the repo [`my-workflow.yml` file](/.github/workflows/my-workflow.yml)
   
 ### :keyboard: Activity 1: Edit the custom action at the bottom of the workflow file.
-  
+
 ```yaml
    - name: ha-ha
      uses: ./.github/actions/joke-action
 ```
+
 Here is what the full file should look like (we’re using issues instead of the pull request event and removing the reference to the hello world action.) 
+
 ```yaml
 - name: JS Actions
 
@@ -431,6 +450,7 @@ jobs:
 </details>
   
 <details id=6>
+
 <summary><strong> Step 6: Trigger the joke action</strong></summary>
 
 ### Great job! 
