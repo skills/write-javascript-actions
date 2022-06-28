@@ -20,25 +20,12 @@
 
 <!--step0-->
 
-<details id=0 open>
-<summary><strong>:golf: Start</strong></summary>
-
-**To start this course: [<img width="150" alt="Use this template" src="https://user-images.githubusercontent.com/1221423/148581131-555c0fb8-5361-4450-a760-75fa6219a2fc.png">](https://github.com/InfomagnusOrg/github-actions-writing-javascript-actions/generate)**
-
-> We recommend creating a public repository, as private repositories will [use Actions minutes](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions).<br>
-> After you make your own repository, wait about 20 seconds and refresh.
-
 Write your own GitHub JavaScript Action and automate customized tasks unique to your workflow.
 
 - **Who is this for**: Developers, GitHub users, users new to Git, students, managers, and for teams.
-- **What you'll learn**: 
-  - Consume actions within a workflow file
-  - Create custom JavaScript based actions
-  - Publish your newly created action to the marketplace
-  
-**Prerequisites**: Before you take this course, you may want to go through the following courses:
-- [Hello, GitHub Actions!](https://lab.github.com/github/hello-github-actions!) to learn the basics of how GitHub Actions work
-- [GitHub Actions: Continuous Integration](https://lab.github.com/githubtraining/github-actions:-continuous-integration) to dive deeper into a workflow file
+- **What you'll learn**: How to consume actions within a workflow file, create custom JavaScript based actions and publish your newly created action to the marketplace.
+- **Prerequisites**: Before you start, you should be familiar with GitHub, GitHub Actions, and Continuous Integration with GitHub Actions.
+- **How long**: TBD : Time to take course needs to be added 
   
 ## Projects used
 
