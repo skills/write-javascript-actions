@@ -25,7 +25,7 @@ Write your own GitHub JavaScript Action and automate customized tasks unique to 
 - **Who is this for**: Developers, GitHub users, users new to Git, students, managers, and for teams.
 - **What you'll learn**: How to consume actions within a workflow file, create custom JavaScript based actions and publish your newly created action to the marketplace.
 - **Prerequisites**: Before you start, you should be familiar with GitHub, GitHub Actions, and Continuous Integration with GitHub Actions.
-- **How long**: This course is 6 steps long and takes about TBD hours to be completed. 
+- **How long**: This course is 6 steps long and takes about 1 to 2 hours to be completed. 
   
 ## Projects used
 
@@ -79,7 +79,7 @@ _In our case, we will use this one **workflow** file for many things, which lead
 
 Read more about [workflows](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/configuring-a-workflow#choosing-the-type-of-actions-for-your-workflow)
 
-<details id=1>
+<details id=1 open>
 
 <summary><strong> Step 1: Initialize a new JavaScript project</strong></summary>
 
@@ -101,7 +101,7 @@ Most of your work going forward will take place away from your Skills repository
 2. [ ] [Visual Studio Code](https://code.visualstudio.com/) or your editor of choice
 3. [ ] [Git](https://git-scm.com/)
   
-### :keyboard: Activity 1: Initialize a new JavaScript project
+### Activity 1: Initialize a new JavaScript project
 
 Once you have the necessary tools installed locally, follow these steps to begin creating your first action.
 
@@ -130,7 +130,7 @@ Once you have the necessary tools installed locally, follow these steps to begin
    ```shell
    npm init -y
    ```
-8. Install the **request**, **request-promise** and **@actions/core** dependencies using `npm` from the [GitHub ToolKit (https://github.com/actions/toolkit):
+8. Install the **request**, **request-promise** and **@actions/core** dependencies using `npm` from the [GitHub ToolKit] (https://github.com/actions/toolkit):
    ```shell
    npm install --save request request-promise @actions/core
    ```
@@ -154,7 +154,7 @@ Once you have the necessary tools installed locally, follow these steps to begin
   
 Now that we have the custom action pre-requisites, let us create **joke-action** action.
 
-### :keyboard: Activity 1: Configure Your Action
+### Activity 1: Configure Your Action
 
 All of the following steps take place inside of the `.github/actions/joke-action` directory.
 
@@ -208,7 +208,7 @@ This file defines the following information about your action:
 
 Read more about [Action metadata](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/metadata-syntax-for-github-actions)
 
-### :keyboard: Activity 1: Create the metadata file
+### Activity 1: Create the metadata file
   
 All of the following steps take place inside of the `.github/actions/joke-action` directory.
 
@@ -349,7 +349,7 @@ _Don't forget to call the `run()` function._
 
 </details>
   
-### :keyboard: Activity 1: Creating the JavaScript files for your new action.
+### Activity 1: Creating the JavaScript files for your new action.
 
 1. Create and add the following contents to the `.github/actions/joke-action/joke.js` file:
 
@@ -408,7 +408,7 @@ _Don't forget to call the `run()` function._
   
 All of the following steps will add the action to the workflow file that’s already in the repo [`my-workflow.yml` file](/.github/workflows/my-workflow.yml)
   
-### :keyboard: Activity 1: Edit the custom action at the bottom of the workflow file.
+### Activity 1: Edit the custom action at the bottom of the workflow file.
 
 ```yaml
    - name: ha-ha
@@ -476,7 +476,6 @@ Follow [this guide](https://help.github.com/en/actions/automating-your-workflow-
   
 ### What's next?
 
-- We'd love to hear what you thought of this course [in our community forum](https://github.community/c/education/github-learning-lab/34).
 - [Take another GitHub Skills course](https://github.com/githubskills).
 - [Read the GitHub Getting Started docs](https://docs.github.com/en/get-started).
 - To find projects to contribute to, check out [GitHub Explore](https://github.com/explore).
@@ -485,6 +484,7 @@ Follow [this guide](https://help.github.com/en/actions/automating-your-workflow-
 
 ---
 
-Get help: [Post in our community forum](https://github.community/c/education/github-learning-lab/34) &bull; [Review the GitHub status page](https://www.githubstatus.com/)
+Get help: [Post in our discussion board](https://github.com/skills/.github/discussions) &bull; [Review the GitHub status page](https://www.githubstatus.com/)
 
 &copy; 2022 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [CC-BY-4.0 License](https://creativecommons.org/licenses/by/4.0/legalcode)
+
