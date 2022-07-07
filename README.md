@@ -26,12 +26,6 @@ Write your own GitHub JavaScript Action and automate customized tasks unique to 
 - **What you'll learn**: How to consume actions within a workflow file, create custom JavaScript based actions and publish your newly created action to the marketplace.
 - **Prerequisites**: Before you start, you should be familiar with GitHub, GitHub Actions, and Continuous Integration with GitHub Actions.
 - **How long**: This course is 6 steps long and takes about 1 to 2 hours to be completed. 
-  
-## Projects used
-
-This makes use of the following open source projects. Consider exploring these repos and maybe even making contributions!
-
-- [GitHub Actions Toolkit](https://github.com/actions/toolkit), a multipurpose JavaScript library for writing actions
 
 ## How to start this course
 
@@ -55,17 +49,6 @@ This makes use of the following open source projects. Consider exploring these r
   Encourage users to open new tabs for steps!
   TBD-step-1-notes.
 -->
-### Welcome to this Skills course about Actions where you will build the following:
-
-- ![screenshot of a pull request in the course with instructions on how to fetch a joke from the API, a second screenshot of a workflow running and outputting the joke: "Guy told me today he did not know what cloning is. I told him, that makes 2 of us."](https://user-images.githubusercontent.com/16547949/76105870-cce3a380-5fa3-11ea-8882-7138319b4100.png)
-
-  - In this course you will build three actions that each accomplish different tasks designed to demonstrate the flexibility of creating and consuming JavaScript Based Actions.
-
-  - First, you will start with the traditional "Hello World!" program which will teach you where to find the output of a workflow run. You will then modify this "Hello World!" action to accept `input` parameters which allow the action to be more dynamic. 
-
-  - Second, you will write an action that call upon an external API to retrieve a fact about cats and prints it to the workflows output. You will then modify this cat fact action to set the retrieved data as `output` for another action in the workflow to consume.
-
-  - Lastly, you will write a third action that will open an issue in your repository making the cat fact available to everyone. You will learn how to use the `output` of previous actions as `input` for current actions in this step.
 
 ### Configuring a workflow
 
@@ -79,9 +62,9 @@ _In our case, we will use this one **workflow** file for many things, which lead
 
 Read more about [workflows](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/configuring-a-workflow#choosing-the-type-of-actions-for-your-workflow)
 
-<details id=1 open>
+<details id=1 close>
 
-<summary><strong> Step 1: Initialize a new JavaScript project</strong></summary>
+<summary><h2> Step 1: Initialize a new JavaScript project</h2></summary>
 
 ## On to your development environment
 
@@ -148,7 +131,7 @@ Once you have the necessary tools installed locally, follow these steps to begin
 </details>
   
 <details id=2>
-<summary><strong> Step 2: Configure Your Action</strong></summary>
+<summary><h2> Step 2: Configure Your Action</h2></summary>
 
 ### Excellent!
   
@@ -183,7 +166,7 @@ We will start with using the parameters that are **required** and later implemen
 </details>
   
 <details id=3>
-<summary><strong> Step 3: Create the metadata file</strong></summary>
+<summary><h2> Step 3: Create the metadata file</h2></summary>
 
 ## Action metadata
 
@@ -240,7 +223,7 @@ Our action does not require much metadata for it to run correctly. We will not b
 </details>
   
 <details id=4>
-<summary><strong> Step 4: Create the JavaScript files for your action</strong></summary>
+<summary><h2> Step 4: Create the JavaScript files for your action</h2></summary>
 
 ## Files
 
@@ -402,7 +385,7 @@ _Don't forget to call the `run()` function._
 </details>
   
 <details id=5>
-<summary><strong> Step 5: Add your action to the workflow file</strong></summary>
+<summary><h2> Step 5: Add your action to the workflow file</h2></summary>
 
 ### Great job!
   
@@ -438,7 +421,7 @@ jobs:
   
 <details id=6>
 
-<summary><strong> Step 6: Trigger the joke action</strong></summary>
+<summary><h2> Step 6: Trigger the joke action</h2></summary>
 
 ### Great job! 
 Everything is all set up and now we are ready to start laughing. You will find you have some joke related labels available to you in this repository. You don't have to use them, any label will trigger our workflow, but the easiest way to follow along would be to use suggested labels.
@@ -453,7 +436,7 @@ Everything is all set up and now we are ready to start laughing. You will find y
 </details>
 
 <details id=7>
-<summary><strong>Finish</strong></summary>
+<summary><h2>Finish</h2></summary>
 
 ### Congratulations, you've completed this course! 
 
