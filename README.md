@@ -401,8 +401,7 @@ All of the following steps will add the action to the workflow file that’s alr
 Here is what the full file should look like (we’re using issues instead of the pull request event and removing the reference to the hello world action.) 
 
 ```yaml
-- name: JS Actions
-
+name: JS Actions
 on:
   issues:
     types: [labeled]
@@ -410,13 +409,12 @@ on:
 jobs:
   action:
      runs-on: ubuntu-latest
-
      steps:
        - uses: actions/checkout@v3
-
-     	 - name: ha-ha
+       - name: ha-ha
          uses: ./.github/actions/joke-action
 ```
+  
 </details>
   
 <details id=6>
