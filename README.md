@@ -217,7 +217,8 @@ Our action does not require much metadata for it to run correctly. We will not b
    ```shell
    git add action.yml
    git commit -m 'add metadata for the joke action'
-   git pull;git push
+   git pull
+   git push
    ```
 4. Wait about 20 seconds then refresh this page for the next step.
 
