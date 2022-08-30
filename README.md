@@ -381,7 +381,8 @@ _Don't forget to call the `run()` function._
    ```shell
    git add joke.js main.js
    git commit -m 'creating joke.js and main.js'
-   git pull;git push
+   git pull
+   git push
    ```
 
 </details>
