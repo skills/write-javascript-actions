@@ -159,7 +159,8 @@ We will start with using the parameters that are **required** and later implemen
    ```shell
    git add action.yml
    git commit -m 'create action.yml'
-   git pull;git push
+   git pull
+   git push
    ```
 5. Wait about 20 seconds then refresh this page for the next step.
 
