@@ -1,10 +1,10 @@
 name: Step 1, Initialize JavaScript Project
 
-# This step triggers after 0-start.yml
+# This step listens for the learner pushing a commit to `main`
 # This step sets STEP to 2
 # This step closes <details id=1> and opens <details id=2>
 
-# This will run every time we update or close the issue
+# This will run every time we push a commit to `main`
 # Reference https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
 
 on:

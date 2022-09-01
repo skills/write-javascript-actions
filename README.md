@@ -436,7 +436,7 @@ Everything is all set up and now we are ready to start laughing. You will find y
  
 </details>
 
-<details id=7>
+<details id=X>
 <summary><h2>Finish</h2></summary>
 
 ### Congratulations, you've completed this course! 
