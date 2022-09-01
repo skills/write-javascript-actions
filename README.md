@@ -397,25 +397,29 @@ All of the following steps will add the action to the workflow file that’s alr
 ### Activity 1: Edit the custom action at the bottom of the workflow file.
 
 ```yaml
-   - name: ha-ha
-     uses: ./.github/actions/joke-action
+      - name: ha-ha
+        uses: ./.github/actions/joke-action
 ```
 
 Here is what the full file should look like (we’re using issues instead of the pull request event and removing the reference to the hello world action.) 
 
 ```yaml
 name: JS Actions
+
 on:
   issues:
     types: [labeled]
 
 jobs:
   action:
-     runs-on: ubuntu-latest
-     steps:
-       - uses: actions/checkout@v3
-       - name: ha-ha
-         uses: ./.github/actions/joke-action
+    if: ${{ !github.event.repository.is_template }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: ha-ha
+        uses: ./.github/actions/joke-action
+
 ```
   
 </details>
