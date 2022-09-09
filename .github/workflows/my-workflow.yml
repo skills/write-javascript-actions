@@ -1,4 +1,4 @@
-ame: JS Actions
+name: JS Actions
 
 on:
   issues:
@@ -6,7 +6,8 @@ on:
 
 jobs:
   action:
-     runs-on: ubuntu-latest
+    if: ${{ !github.event.repository.is_template }}
+    runs-on: ubuntu-latest
 
-     steps:
-       - uses: actions/checkout@v3
+    steps:
+      - uses: actions/checkout@v3
