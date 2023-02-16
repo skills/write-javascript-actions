@@ -437,7 +437,7 @@ Everything is all set up and now we are ready to start laughing. You will find y
 1. Open issue #1 in the "Issues tab"
 2. Apply the `first-joke` label to the issue
 3. Wait a few seconds and then apply the `second-joke` label to the issue
-4. Check the workflow results on the "Actions tab"
+4. Check the `JS Actions` workflow results on the "Actions tab"
  
 </details>
 
