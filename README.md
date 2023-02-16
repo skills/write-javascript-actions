@@ -150,7 +150,7 @@ We will start with using the parameters that are **required** and later implemen
    description: "use an external API to retrieve and display a joke"
 
    runs:
-     using: "node12"
+     using: "node16"
      main: "main.js"
    ```
 3. Save the `action.yml` file
@@ -208,7 +208,7 @@ Our action does not require much metadata for it to run correctly. We will not b
        description: The resulting joke from the icanhazdadjokes API
 
    runs:
-     using: "node12"
+     using: "node16"
      main: "main.js"
    ```
 2. Save the `action.yml` file
@@ -420,7 +420,9 @@ jobs:
         uses: ./.github/actions/joke-action
 
 ```
-  
+
+You can make these changes by [editing the file directly](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files), make sure to choose the `Commit directly to the main branch` option.
+
 </details>
   
 <details id=6>
