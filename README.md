@@ -150,7 +150,7 @@ We will start with using the parameters that are **required** and later implemen
    description: "use an external API to retrieve and display a joke"
 
    runs:
-     using: "node12"
+     using: "node16"
      main: "main.js"
    ```
 3. Save the `action.yml` file
@@ -208,7 +208,7 @@ Our action does not require much metadata for it to run correctly. We will not b
        description: The resulting joke from the icanhazdadjokes API
 
    runs:
-     using: "node12"
+     using: "node16"
      main: "main.js"
    ```
 2. Save the `action.yml` file
@@ -420,7 +420,9 @@ jobs:
         uses: ./.github/actions/joke-action
 
 ```
-  
+
+You can make these changes in your repository by opening [`my-workflow.yml`](/.github/workflows/my-workflow.yml) in another browswer tab and [editing the file directly](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files). Make sure to select the `Commit directly to the main branch` option.
+
 </details>
   
 <details id=6>
@@ -435,7 +437,7 @@ Everything is all set up and now we are ready to start laughing. You will find y
 1. Open issue #1 in the "Issues tab"
 2. Apply the `first-joke` label to the issue
 3. Wait a few seconds and then apply the `second-joke` label to the issue
-4. Check the workflow results on the "Actions tab"
+4. Check the `JS Actions` workflow results on the "Actions tab"
  
 </details>
 
