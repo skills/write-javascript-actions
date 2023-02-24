@@ -39,15 +39,19 @@ Write your own GitHub JavaScript Action and automate customized tasks unique to 
 
 </details>
 
-
 <!--
   <<< Author notes: Step 1 >>>
   Choose 3-5 steps for your course.
   The first step is always the hardest, so pick something easy!
   Link to docs.github.com for further explanations.
   Encourage users to open new tabs for steps!
-  TBD-step-1-notes.
 -->
+
+<details id=1>
+
+<summary><h2> Step 1: Initialize a new JavaScript project</h2></summary>
+
+_Welcome to the course :tada:_
 
 ### Configuring a workflow
 
@@ -60,10 +64,6 @@ Your repository can contain multiple **workflow** files that carry out a wide va
 _In our case, we will use this one **workflow** file for many things, which leads us to break this convention for teaching purposes._
 
 Read more about [workflows](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/configuring-a-workflow#choosing-the-type-of-actions-for-your-workflow)
-
-<details id=1>
-
-<summary><h2> Step 1: Initialize a new JavaScript project</h2></summary>
 
 ## On to your development environment
 
@@ -83,7 +83,7 @@ Most of your work going forward will take place away from your Skills repository
 2. [ ] [Visual Studio Code](https://code.visualstudio.com/) or your editor of choice
 3. [ ] [Git](https://git-scm.com/)
   
-### Activity 1: Initialize a new JavaScript project
+### :keyboard: Activity 1: Initialize a new JavaScript project
 
 Once you have the necessary tools installed locally, follow these steps to begin creating your first action.
 
@@ -132,11 +132,13 @@ Once you have the necessary tools installed locally, follow these steps to begin
 <details id=2>
 <summary><h2> Step 2: Configure Your Action</h2></summary>
 
+_Let's keep going! :bike:_
+
 ### Excellent!
   
 Now that we have the custom action pre-requisites, let us create **joke-action** action.
 
-### Activity 1: Configure Your Action
+### :keyboard: Activity 1: Configure Your Action
 
 All of the following steps take place inside of the `.github/actions/joke-action` directory.
 
@@ -168,6 +170,8 @@ We will start with using the parameters that are **required** and later implemen
 <details id=3>
 <summary><h2> Step 3: Create the metadata file</h2></summary>
 
+_Nice working configuring your action :smile:_
+
 ## Action metadata
 
 Every GitHub Action that we write needs to be accompanied by a metadata file. This file has a few rules to it, as are indicated below:
@@ -191,7 +195,7 @@ This file defines the following information about your action:
 
 Read more about [Action metadata](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/metadata-syntax-for-github-actions)
 
-### Activity 1: Create the metadata file
+### :keyboard: Activity 1: Create the metadata file
   
 All of the following steps take place inside of the `.github/actions/joke-action` directory.
 
@@ -225,6 +229,8 @@ Our action does not require much metadata for it to run correctly. We will not b
   
 <details id=4>
 <summary><h2> Step 4: Create the JavaScript files for your action</h2></summary>
+
+_Good job adding the metadata file! :dancer:_
 
 ## Files
 
@@ -333,7 +339,7 @@ _Don't forget to call the `run()` function._
 
 </details>
   
-### Activity 1: Creating the JavaScript files for your new action.
+### :keyboard: Activity 1: Creating the JavaScript files for your new action.
 
 1. Create and add the following contents to the `.github/actions/joke-action/joke.js` file:
 
@@ -389,11 +395,11 @@ _Don't forget to call the `run()` function._
 <details id=5>
 <summary><h2> Step 5: Add your action to the workflow file</h2></summary>
 
-### Great job!
+_Great job! :tada:_
   
 All of the following steps will add the action to the workflow file that’s already in the repo [`my-workflow.yml` file](/.github/workflows/my-workflow.yml)
   
-### Activity 1: Edit the custom action at the bottom of the workflow file.
+### :keyboard: Activity 1: Edit the custom action at the bottom of the workflow file.
 
 ```yaml
       - name: ha-ha
@@ -429,7 +435,8 @@ You can make these changes in your repository by opening [`my-workflow.yml`](/.g
 
 <summary><h2> Step 6: Trigger the joke action</h2></summary>
 
-### Great job! 
+_Great job! :heart:_
+
 Everything is all set up and now we are ready to start laughing. You will find you have some joke related labels available to you in this repository. You don't have to use them, any label will trigger our workflow, but the easiest way to follow along would be to use suggested labels.
 
 ### Trigger a joke
@@ -443,6 +450,8 @@ Everything is all set up and now we are ready to start laughing. You will find y
 
 <details id=X>
 <summary><h2>Finish</h2></summary>
+
+<img src=https://octodex.github.com/images/poptocat_v2.png alt=celebrate width=300 align=right>
 
 ### Congratulations, you've completed this course! 
 
