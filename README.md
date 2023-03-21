@@ -8,6 +8,8 @@
 
 # Write JavaScript Actions
 
+_Write your own GitHub JavaScript Action and automate customized tasks unique to your workflow._
+
 <!--
   <<< Author notes: Start of the course >>>
   Include start button, a note about Actions minutes,
