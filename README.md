@@ -259,11 +259,9 @@ When we make our request to this API we will get back a JSON Object in the respo
 
 It contains 3 key/value pairs of data that we can use in our own program or service. In our case, we are only interested in the `joke` field.
 
-**Joke Module**
+### :keyboard: Activity 1: Creating the JavaScript files for your new action.
 
-We will create a file named `joke.js` and it will reside in the `.github/action/joke-action` directory.
-
-The joke module will look like this:
+1. Create and add the following contents to the `.github/actions/joke-action/joke.js` file:
 
 ```javascript
 const request = require("request-promise");
@@ -306,13 +304,9 @@ This file finishes up by exporting the newly created function so that we can use
   
 </details>
 
-### Creating the main entry point for your action
+2. Save the `joke.js` file.
 
-**Main Module**
-
-We will also create a file named `main.js` that resides inside of the `.github/actions/joke-action` directory.
-
-That file will look like this:
+3. Create and add the following contents to the `.github/actions/joke-action/main.js` file:
 
 ```javascript
 const getJoke = require("./joke");
@@ -340,48 +334,6 @@ Finally we finish the function with by setting the contents of the joke as the v
 _Don't forget to call the `run()` function._
 
 </details>
-  
-### :keyboard: Activity 1: Creating the JavaScript files for your new action.
-
-1. Create and add the following contents to the `.github/actions/joke-action/joke.js` file:
-
-   ```javascript
-   const request = require("request-promise");
-
-   const options = {
-     method: "GET",
-     uri: "https://icanhazdadjoke.com/",
-     headers: {
-       Accept: "application/json",
-       "User-Agent":
-         "Writing JavaScript action GitHub Skills course."
-     },
-     json: true
-   };
-
-   async function getJoke() {
-     const res = await request(options);
-     return res.joke;
-   }
-
-   module.exports = getJoke;
-   ```
-
-2. Save the `joke.js` file.
-3. Create and add the following contents to the `.github/actions/joke-action/main.js` file:
-
-   ```javascript
-   const getJoke = require("./joke");
-   const core = require("@actions/core");
-
-   async function run() {
-     const joke = await getJoke();
-     console.log(joke);
-     core.setOutput("joke-output", joke);
-   }
-
-   run();
-   ```
 
 4. Save the `main.js` file.
 5. Commit the changes to this branch and push them to GitHub:
@@ -487,4 +439,3 @@ Follow [this guide](https://help.github.com/en/actions/automating-your-workflow-
 Get help: [Post in our discussion board](https://github.com/skills/.github/discussions) &bull; [Review the GitHub status page](https://www.githubstatus.com/)
 
 &copy; 2022 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
-
