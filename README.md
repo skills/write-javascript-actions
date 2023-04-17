@@ -172,7 +172,7 @@ We will start with using the parameters that are **required** and later implemen
 <details id=3>
 <summary><h2> Step 3: Create the metadata file</h2></summary>
 
-_Nice working configuring your action :smile:_
+_Nice work configuring your action :smile:_
 
 ## Action metadata
 
