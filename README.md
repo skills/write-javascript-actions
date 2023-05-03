@@ -45,7 +45,10 @@ Write your own GitHub JavaScript Action and automate customized tasks unique to 
 [![start-course](https://user-images.githubusercontent.com/1221423/235727646-4a590299-ffe5-480d-8cd5-8194ea184546.svg)](https://github.com/new?template_owner=skills&template_name=write-javascript-actions&owner=%40me&name=skills-write-javascript-actions&description=My+clone+repository&visibility=public)
 
 1. Right-click **Start course** and open the link in a new tab.
-2. In the new tab, follow the prompts to create a new repository. For owner, we recommend your personal account.
+2. In the new tab, most of the prompts will automatically fill in for you.
+   - For owner, choose your personal account or an organization to host the repository.
+   - We recommend creating a public repository, as private repositories will [use Actions minutes](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions).
+   - Scroll down and click the **Create repository** button at the bottom of the form.
 3. After your new repository is created, wait about 20 seconds, then refresh the page. Follow the step-by-step instructions in the new repository's README.
 
 </details>
@@ -93,7 +96,7 @@ Most of your work going forward will take place away from your Skills repository
 1. [ ] [Node.js](https://nodejs.org)
 2. [ ] [Visual Studio Code](https://code.visualstudio.com/) or your editor of choice
 3. [ ] [Git](https://git-scm.com/)
-  
+
 ### :keyboard: Activity 1: Initialize a new JavaScript project
 
 Once you have the necessary tools installed locally, follow these steps to begin creating your first action.
@@ -107,7 +110,7 @@ Once you have the necessary tools installed locally, follow these steps to begin
    ```shell
    cd <local folder with cloned repo>
    ```
-4. We are using branch called `main`. 
+4. We are using branch called `main`.
    ```shell
    git switch main
    ```
@@ -139,14 +142,14 @@ Once you have the necessary tools installed locally, follow these steps to begin
 11. Wait about 20 seconds then refresh this page for the next step.
 
 </details>
-  
+
 <details id=2>
 <summary><h2> Step 2: Configure Your Action</h2></summary>
 
 _Let's keep going! :bike:_
 
 ### Excellent!
-  
+
 Now that we have the custom action pre-requisites, let us create **joke-action** action.
 
 ### :keyboard: Activity 1: Configure Your Action
@@ -177,7 +180,7 @@ We will start with using the parameters that are **required** and later implemen
 5. Wait about 20 seconds then refresh this page for the next step.
 
 </details>
-  
+
 <details id=3>
 <summary><h2> Step 3: Create the metadata file</h2></summary>
 
@@ -207,7 +210,7 @@ This file defines the following information about your action:
 Read more about [Action metadata](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/metadata-syntax-for-github-actions)
 
 ### :keyboard: Activity 1: Create the metadata file
-  
+
 All of the following steps take place inside of the `.github/actions/joke-action` directory.
 
 Our action does not require much metadata for it to run correctly. We will not be accepting any inputs, we will however be setting a single output this time.
@@ -237,7 +240,7 @@ Our action does not require much metadata for it to run correctly. We will not b
 4. Wait about 20 seconds then refresh this page for the next step.
 
 </details>
-  
+
 <details id=4>
 <summary><h2> Step 4: Create the JavaScript files for your action</h2></summary>
 
@@ -312,7 +315,7 @@ Next we define an **asynchronous JavaScript function** to make the request for u
 Lastly, we `return` the `res.joke` which is only the value associated with the `joke` key of the JSON Object. This value will be random every time our action runs because of how we are interacting with the **icanhazdadjoke** API.
 
 This file finishes up by exporting the newly created function so that we can use it in our `main.js` file.
-  
+
 </details>
 
 ### Creating the main entry point for your action
@@ -349,7 +352,7 @@ Finally we finish the function with by setting the contents of the joke as the v
 _Don't forget to call the `run()` function._
 
 </details>
-  
+
 ### :keyboard: Activity 1: Creating the JavaScript files for your new action.
 
 1. Create and add the following contents to the `.github/actions/joke-action/joke.js` file:
@@ -402,14 +405,14 @@ _Don't forget to call the `run()` function._
    ```
 
 </details>
-  
+
 <details id=5>
 <summary><h2> Step 5: Add your action to the workflow file</h2></summary>
 
 _Great job! :tada:_
-  
+
 All of the following steps will add the action to the workflow file that’s already in the repo [`my-workflow.yml` file](/.github/workflows/my-workflow.yml)
-  
+
 ### :keyboard: Activity 1: Edit the custom action at the bottom of the workflow file.
 
 ```yaml
@@ -417,7 +420,7 @@ All of the following steps will add the action to the workflow file that’s alr
         uses: ./.github/actions/joke-action
 ```
 
-Here is what the full file should look like (we’re using issues instead of the pull request event and removing the reference to the hello world action.) 
+Here is what the full file should look like (we’re using issues instead of the pull request event and removing the reference to the hello world action.)
 
 ```yaml
 name: JS Actions
@@ -441,7 +444,7 @@ jobs:
 You can make these changes in your repository by opening [`my-workflow.yml`](/.github/workflows/my-workflow.yml) in another browser tab and [editing the file directly](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files). Make sure to select the `Commit directly to the main branch` option.
 
 </details>
-  
+
 <details id=6>
 
 <summary><h2> Step 6: Trigger the joke action</h2></summary>
@@ -456,7 +459,7 @@ Everything is all set up and now we are ready to start laughing. You will find y
 2. Apply the `first-joke` label to the issue
 3. Wait a few seconds and then apply the `second-joke` label to the issue
 4. Check the `JS Actions` workflow results on the "Actions tab"
- 
+
 </details>
 
 <details id=X>
@@ -464,7 +467,7 @@ Everything is all set up and now we are ready to start laughing. You will find y
 
 <img src=https://octodex.github.com/images/poptocat_v2.png alt=celebrate width=300 align=right>
 
-### Congratulations, you've completed this course! 
+### Congratulations, you've completed this course!
 
 In this course, you've learned a lot about developing custom actions using JavaScript and Actions Toolkit.
 
@@ -479,10 +482,10 @@ Some notable actions you will find on the marketplace are:
 - [Jekyll action](https://github.com/marketplace/actions/jekyll-action)
 - [Run Jest](https://github.com/marketplace/actions/run-jest)
 
-And that just scratches the surface of the 1600+ and counting actions you will find on the marketplace 
+And that just scratches the surface of the 1600+ and counting actions you will find on the marketplace
 
 Follow [this guide](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/publishing-actions-in-github-marketplace#publishing-an-action) to learn how to publish your actions to the GitHub Marketplace
-  
+
 ### What's next?
 
 - [Take another GitHub Skills course](https://github.com/githubskills).
@@ -496,4 +499,3 @@ Follow [this guide](https://help.github.com/en/actions/automating-your-workflow-
 Get help: [Post in our discussion board](https://github.com/skills/.github/discussions) &bull; [Review the GitHub status page](https://www.githubstatus.com/)
 
 &copy; 2022 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
-
