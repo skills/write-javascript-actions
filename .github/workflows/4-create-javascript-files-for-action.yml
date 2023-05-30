@@ -28,11 +28,11 @@ jobs:
           echo "current_step=$(cat ./.github/steps/-step.txt)" >> $GITHUB_OUTPUT
     outputs:
       current_step: ${{ steps.get_step.outputs.current_step }}
-      
+
   on_javascript_files_added:
     name: Check if JavaScript files were added
     needs: get_current_step
-    
+
     # We will only run this action when:
     # 1. This repository isn't the template repository.
     # 2. The step is currently 4.
@@ -55,8 +55,8 @@ jobs:
       - name: Dump GitHub comment context
         id: github_comment_step
         run: echo '${{ toJSON(github.event) }}'
-        
-     # Check if action JavaScript exists in the expected location.
+
+      # Check if action JavaScript exists in the expected location.
       - name: Check file existence
         id: check_files
         uses: andstor/file-existence-action@v2

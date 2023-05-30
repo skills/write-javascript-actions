@@ -1,4 +1,3 @@
-
 <!--
   <<< Author notes: Step 1 >>>
   Choose 3-5 steps for your course.

@@ -17,7 +17,7 @@ permissions:
 
 env:
   EXPECTED_METADATA: "second joke"
-  
+
 jobs:
   # Get the current step to only run the main job when the learner is on the same step.
   get_current_step:
@@ -31,11 +31,11 @@ jobs:
           echo "current_step=$(cat ./.github/steps/-step.txt)" >> $GITHUB_OUTPUT
     outputs:
       current_step: ${{ steps.get_step.outputs.current_step }}
-      
+
   on_my_workflow_run:
     name: Check if my_workflow has run
     needs: get_current_step
-    
+
     # We will only run this action when:
     # 1. This repository isn't the template repository.
     # 2. The step is currently 6.

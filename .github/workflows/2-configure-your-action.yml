@@ -10,7 +10,7 @@ on:
   push:
     branches:
       - main
-  
+
 permissions:
   # Need `contents: read` to checkout the repository.
   # Need `contents: write` to update the step metadata.
@@ -29,11 +29,11 @@ jobs:
           echo "current_step=$(cat ./.github/steps/-step.txt)" >> $GITHUB_OUTPUT
     outputs:
       current_step: ${{ steps.get_step.outputs.current_step }}
-      
+
   on_check_action_file_added:
     name: Check if the action.yml file was added
     needs: get_current_step
-    
+
     # We will only run this action when:
     # 1. This repository isn't the template repository.
     # 2. The step is currently 2.
@@ -56,7 +56,7 @@ jobs:
       - name: Dump GitHub comment context
         id: github_comment_step
         run: echo '${{ toJSON(github.event) }}'
-        
+
       # Check if NPM package.json exists in the expected location.
       - name: Check file existence
         id: check_files

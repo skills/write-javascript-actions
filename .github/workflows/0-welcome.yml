@@ -3,18 +3,18 @@ name: Step 0, Welcome
 # This step triggers after the learner creates a new repository from the template.
 # This workflow updates from step 0 to step 1.
 
-# When creating a repository from a template, there is variability in the 
-# order and timing of events that fire and when workflow triggers are registered. 
+# When creating a repository from a template, there is variability in the
+# order and timing of events that fire and when workflow triggers are registered.
 # Given that, these triggers are purposely broad to ensure this workflow is always triggered.
 # The conditions within the on_start job are to ensure it is only fully executed once.
 # Reference: https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
 on:
   create:
   workflow_dispatch:
-  
+
 permissions:
   contents: write
-  pull-requests: write 
+  pull-requests: write
   issues: write
 
 jobs:
@@ -85,7 +85,7 @@ jobs:
           gh issue create --title "Create Custom Action" --body "Implement custom action using JavaScript"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
+
       # Update README from step 0 to step 1.
       - name: Update to step 1
         uses: skills/action-update-step@v2

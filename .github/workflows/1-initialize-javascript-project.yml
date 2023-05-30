@@ -30,11 +30,11 @@ jobs:
           echo "current_step=$(cat ./.github/steps/-step.txt)" >> $GITHUB_OUTPUT
     outputs:
       current_step: ${{ steps.get_step.outputs.current_step }}
-  
+
   on_commit_contains_required_dependendencies:
     name: Check if main branch has the required action dependencies
     needs: get_current_step
-    
+
     # We will only run this action when:
     # 1. This repository isn't the template repository.
     # 2. The step is currently 1.
@@ -56,14 +56,14 @@ jobs:
       - name: Dump GitHub comment context
         id: github_comment_step
         run: echo '${{ toJSON(github.event) }}'
-     
+
       # Check if NPM package.json exists in the expected location.
       - name: Check file existence
         id: check_files
         uses: andstor/file-existence-action@v2
         with:
           files: ".github/actions/joke-action/package.json"
-        
+
       # Update README from step 1 to step 2.
       - name: Update to step 2
         if: steps.check_files.outputs.files_exists == 'true'

@@ -1,7 +1,4 @@
-
-
-
-##  Step 4: Create the JavaScript files for your action
+## Step 4: Create the JavaScript files for your action
 
 _Good job adding the metadata file! :dancer:_
 
@@ -14,7 +11,6 @@ To do so we will create two files. One of them will contain the logic to reach o
 ### Fetching a joke
 
 **Joke API**
-
 
 The first file will be `joke.js` and it will fetch our joke for us. We will be using the [icanhazdadjoke API](https://icanhazdadjoke.com/api) for our action. This API does not require any authentication, but it does however that we set a few parameters in the [HTTP headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers). We need to point out what those are when we get to the code, however it is outside of the scope of this course to cover HTTP in any depth.
 
@@ -44,10 +40,9 @@ const options = {
   uri: "https://icanhazdadjoke.com/",
   headers: {
     Accept: "application/json",
-    "User-Agent":
-      "Writing JavaScript action GitHub Skills course."
+    "User-Agent": "Writing JavaScript action GitHub Skills course.",
   },
-  json: true
+  json: true,
 };
 
 async function getJoke() {
@@ -75,8 +70,6 @@ Next we define an **asynchronous JavaScript function** to make the request for u
 Lastly, we `return` the `res.joke` which is only the value associated with the `joke` key of the JSON Object. This value will be random every time our action runs because of how we are interacting with the **icanhazdadjoke** API.
 
 This file finishes up by exporting the newly created function so that we can use it in our `main.js` file.
-
-
 
 ### Creating the main entry point for your action
 
@@ -112,8 +105,6 @@ Then we log the joke to the console.
 Finally we finish the function with by setting the contents of the joke as the value of the `joke-output` output parameter. We will use this output later in the course.
 _Don't forget to call the `run()` function._
 
-
-
 ### :keyboard: Activity 1: Creating the JavaScript files for your new action.
 
 1. Create and add the following contents to the `.github/actions/joke-action/joke.js` file:
@@ -126,10 +117,9 @@ _Don't forget to call the `run()` function._
      uri: "https://icanhazdadjoke.com/",
      headers: {
        Accept: "application/json",
-       "User-Agent":
-         "Writing JavaScript action GitHub Skills course."
+       "User-Agent": "Writing JavaScript action GitHub Skills course.",
      },
-     json: true
+     json: true,
    };
 
    async function getJoke() {

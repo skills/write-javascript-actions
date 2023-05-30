@@ -1,7 +1,4 @@
-
-
-
-##  Step 5: Add your action to the workflow file
+## Step 5: Add your action to the workflow file
 
 _Great job! :tada:_
 
@@ -10,8 +7,8 @@ All of the following steps will add the action to the workflow file that’s alr
 ### :keyboard: Activity 1: Edit the custom action at the bottom of the workflow file.
 
 ```yaml
-      - name: ha-ha
-        uses: ./.github/actions/joke-action
+- name: ha-ha
+  uses: ./.github/actions/joke-action
 ```
 
 Here is what the full file should look like (we’re using issues instead of the pull request event and removing the reference to the hello world action.)
@@ -32,7 +29,6 @@ jobs:
       - uses: actions/checkout@v3
       - name: ha-ha
         uses: ./.github/actions/joke-action
-
 ```
 
 You can make these changes in your repository by opening [`my-workflow.yml`](/.github/workflows/my-workflow.yml) in another browser tab and [editing the file directly](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files). Make sure to select the `Commit directly to the main branch` option.

@@ -1,5 +1,4 @@
-
-##  Step 2: Configure Your Action
+## Step 2: Configure Your Action
 
 _Let's keep going! :bike:_
 
@@ -15,6 +14,7 @@ We will start with using the parameters that are **required** and later implemen
 
 1. Create a new file in: `.github/actions/joke-action/action.yml`
 2. Add the following contents to the `.github/actions/joke-action/action.yml` file:
+
    ```yaml
    name: "my joke action"
 
@@ -24,6 +24,7 @@ We will start with using the parameters that are **required** and later implemen
      using: "node16"
      main: "main.js"
    ```
+
 3. Save the `action.yml` file
 4. Commit the changes and push them to the `main` branch:
    ```shell
@@ -33,4 +34,3 @@ We will start with using the parameters that are **required** and later implemen
    git push
    ```
 5. Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to the next step.
-
