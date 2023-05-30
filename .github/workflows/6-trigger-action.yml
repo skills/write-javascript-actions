@@ -1,7 +1,7 @@
 name: Step 6, Trigger Your Action
 
 # This step listens for the learner applying a label to an issue.
-# This workflow updates from step  to step X.
+# This workflow updates from step 6 to step X.
 
 # This will run every time we apply a label to an issue.
 # Reference: https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
