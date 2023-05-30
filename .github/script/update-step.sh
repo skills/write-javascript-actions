@@ -12,13 +12,7 @@ fi
 echo "Make sure we are on the main branch"
 git checkout main
 
-echo "Remove 'open' from any <details> tags"
-sed -r 's/<details id=([0-9]+) open>/<details id=\1>/g' README.md > tmp
-mv tmp README.md
-
-echo "Add 'open' to step TO_STEP"
-sed -r "s/<details id=$TO_STEP>/<details id=$TO_STEPopen>/g" README.md > tmp
-mv tmp README.md
+echo "TODO NEEDS UPDATE"
 
 echo "Update the step file to TO_STEP"
 echo "$TO_STEP" > .github/steps/-step.txt

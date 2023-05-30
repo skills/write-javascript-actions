@@ -58,7 +58,8 @@ async function getJoke() {
 module.exports = getJoke;
 ```
 
-<details><summary>Need an advanced description of the <code>joke.js</code> source code?</summary>
+Need an advanced description of the <code>joke.js</code> source code?
+
 We first bring in the `request-promise` library that we installed earlier using `npm`.
 
 Next we define a set of `options` that the `request-promise` library will use when it makes the request.
@@ -98,7 +99,8 @@ async function run() {
 run();
 ```
 
-<details><summary>Need an advanced description of the <code>main.js</code> source code?</summary>
+Need an advanced description of the <code>main.js</code> source code?
+
 Like we did in the `joke.js` file, we are first going to bring in our dependencies. Only this time, our dependencies include something we wrote! To do that we simply use `require()` to point to the location of the file we wish to bring in.
 
 We also bring in `@actions/core` so that we can set the output of our action.

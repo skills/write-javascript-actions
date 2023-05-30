@@ -7,9 +7,7 @@
   Encourage users to open new tabs for steps!
 -->
 
-<details id=1>
-
-<summary><h2> Step 1: Initialize a new JavaScript project</h2></summary>
+## Step 1: Initialize a new JavaScript project
 
 _Welcome to the course :tada:_
 
