@@ -19,8 +19,7 @@ env:
   EXPECTED_METADATA: outputs
   
 jobs:
-  # Get the current step from .github/steps/-step.txt so we can
-  # limit running the main job when the learner is on the same step.
+  # Get the current step to only run the main job when the learner is on the same step.
   get_current_step:
     name: Check current step number
     runs-on: ubuntu-latest
@@ -69,7 +68,7 @@ jobs:
 
       # Update README to close <details id=3>
       # and open <details id=4>
-            - name: Update to step 4
+      - name: Update to step 4
         if: (contains(steps.read_action_yml_file.outputs.contents, ${{ env.EXPECTED_METADATA }})
         uses: skills/action-update-step@v2
         with:

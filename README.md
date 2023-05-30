@@ -16,15 +16,14 @@ _Write your own GitHub JavaScript Action and automate customized tasks unique to
   and tell the learner why they should take the course.
 -->
 
-<details id=0 open>
-<summary><h2>Welcome</h2></summary>
+## Welcome
 
 Write your own GitHub JavaScript Action and automate customized tasks unique to your workflow.
 
 - **Who is this for**: Developers, GitHub users, users new to Git, students, managers, and for teams.
 - **What you'll learn**: How to consume actions within a workflow file, create custom JavaScript based actions and publish your newly created action to the marketplace.
 - **Prerequisites**: Before you start, you should be familiar with GitHub, GitHub Actions, and Continuous Integration with GitHub Actions.
-- **How long**: This course  takes about 1 to 2 hours to be completed.
+- **How long**: This course takes about 1 to 2 hours to be completed.
 
 In this course, you will:
 
@@ -54,7 +53,7 @@ In this course, you will:
    - Scroll down and click the **Create repository** button at the bottom of the form.
 3. After your new repository is created, wait about 20 seconds, then refresh the page. Follow the step-by-step instructions in the new repository's README.
 
-</details>
+
 
 <!--
   <<< Author notes: Step 1 >>>
@@ -144,10 +143,9 @@ Once you have the necessary tools installed locally, follow these steps to begin
     ```
 11. Wait about 20 seconds then refresh this page for the next step.
 
-</details>
 
-<details id=2>
-<summary><h2> Step 2: Configure Your Action</h2></summary>
+
+##  Step 2: Configure Your Action
 
 _Let's keep going! :bike:_
 
@@ -182,10 +180,9 @@ We will start with using the parameters that are **required** and later implemen
    ```
 5. Wait about 20 seconds then refresh this page for the next step.
 
-</details>
 
-<details id=3>
-<summary><h2> Step 3: Create the metadata file</h2></summary>
+
+##  Step 3: Create the metadata file
 
 _Nice work configuring your action :smile:_
 
@@ -242,10 +239,9 @@ Our action does not require much metadata for it to run correctly. We will not b
    ```
 4. Wait about 20 seconds then refresh this page for the next step.
 
-</details>
 
-<details id=4>
-<summary><h2> Step 4: Create the JavaScript files for your action</h2></summary>
+
+##  Step 4: Create the JavaScript files for your action
 
 _Good job adding the metadata file! :dancer:_
 
@@ -319,7 +315,7 @@ Lastly, we `return` the `res.joke` which is only the value associated with the `
 
 This file finishes up by exporting the newly created function so that we can use it in our `main.js` file.
 
-</details>
+
 
 ### Creating the main entry point for your action
 
@@ -354,7 +350,7 @@ Then we log the joke to the console.
 Finally we finish the function with by setting the contents of the joke as the value of the `joke-output` output parameter. We will use this output later in the course.
 _Don't forget to call the `run()` function._
 
-</details>
+
 
 ### :keyboard: Activity 1: Creating the JavaScript files for your new action.
 
@@ -407,10 +403,9 @@ _Don't forget to call the `run()` function._
    git push
    ```
 
-</details>
 
-<details id=5>
-<summary><h2> Step 5: Add your action to the workflow file</h2></summary>
+
+##  Step 5: Add your action to the workflow file
 
 _Great job! :tada:_
 
@@ -446,7 +441,7 @@ jobs:
 
 You can make these changes in your repository by opening [`my-workflow.yml`](/.github/workflows/my-workflow.yml) in another browser tab and [editing the file directly](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files). Make sure to select the `Commit directly to the main branch` option.
 
-</details>
+
 
 <details id=6>
 
@@ -463,10 +458,9 @@ Everything is all set up and now we are ready to start laughing. You will find y
 3. Wait a few seconds and then apply the `second-joke` label to the issue
 4. Check the `JS Actions` workflow results on the "Actions tab"
 
-</details>
 
-<details id=X>
-<summary><h2>Finish</h2></summary>
+
+## Finish
 
 <img src=https://octodex.github.com/images/poptocat_v2.png alt=celebrate width=300 align=right>
 
@@ -495,7 +489,7 @@ Follow [this guide](https://help.github.com/en/actions/automating-your-workflow-
 - [Read the GitHub Getting Started docs](https://docs.github.com/en/get-started).
 - To find projects to contribute to, check out [GitHub Explore](https://github.com/explore).
 
-</details>
+
 
 ---
 

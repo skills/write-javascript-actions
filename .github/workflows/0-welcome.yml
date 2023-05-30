@@ -18,8 +18,7 @@ permissions:
   issues: write
 
 jobs:
-  # Get the current step from .github/steps/-step.txt so we can
-  # limit running the main job when the learner is on the same step.
+  # Get the current step to only run the main job when the learner is on the same step.
   get_current_step:
     name: Check current step number
     runs-on: ubuntu-latest
@@ -90,7 +89,7 @@ jobs:
           
       # Update README to close <details id=0>
       # and open <details id=1>
-            - name: Update to step 1
+      - name: Update to step 1
         uses: skills/action-update-step@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
