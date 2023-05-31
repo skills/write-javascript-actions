@@ -1,3 +1,9 @@
+<!--
+  <<< Author notes: Step 4 >>>
+  Start this step by acknowledging the previous step.
+  Define terms and link to docs.github.com.
+-->
+
 ## Step 4: Create the JavaScript files for your action
 
 _Good job adding the metadata file! :dancer:_
