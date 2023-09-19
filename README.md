@@ -31,7 +31,7 @@ Write your own GitHub JavaScript Action and automate customized tasks unique to 
 
 In this course, you will:
 
-1. Iniitalize a JavaScript project
+1. Initialize a JavaScript project
 2. Configure an action
 3. Create a metadata file
 4. Create JavaScript files
