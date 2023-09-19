@@ -34,7 +34,7 @@ It contains 3 key/value pairs of data that we can use in our own program or serv
 
 **Joke Module**
 
-We will create a file named `joke.js` and it will reside in the `.github/action/joke-action` directory.
+We will create a file named `joke.js` and it will reside in the `.github/actions/joke-action` directory.
 
 The joke module will look like this:
 
