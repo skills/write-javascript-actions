@@ -59,7 +59,7 @@ jobs:
       # Check if action JavaScript exists in the expected location.
       - name: Check file existence
         id: check_files
-        uses: andstor/file-existence-action@v2
+        uses: andstor/file-existence-action@v3
         with:
           files: ".github/actions/joke-action/joke.js, .github/actions/joke-action/main.js"
 
