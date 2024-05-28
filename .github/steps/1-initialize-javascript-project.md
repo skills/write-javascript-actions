@@ -69,7 +69,7 @@ Once you have the necessary tools installed locally, follow these steps to begin
    ```shell
    npm init -y
    ```
-8. Install the **request**, **request-promise** and **@actions/core** dependencies using `npm` from the [GitHub ToolKit] (https://github.com/actions/toolkit):
+8. Install the **request**, **request-promise** and **@actions/core** dependencies using `npm` from the [GitHub ToolKit](https://github.com/actions/toolkit):
    ```shell
    npm install --save request request-promise @actions/core
    ```
