@@ -9,7 +9,9 @@ name: Step 0, Welcome
 # The conditions within the on_start job are to ensure it is only fully executed once.
 # Reference: https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
 on:
-  create:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
