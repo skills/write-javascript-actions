@@ -57,8 +57,8 @@ Our action does not require much metadata for it to run correctly. We will not b
 3. Commit the changes and push them to GitHub:
    ```shell
    git add action.yml
+   git pull   
    git commit -m 'add metadata for the joke action'
-   git pull
    git push
    ```
 4. Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to the next step.
