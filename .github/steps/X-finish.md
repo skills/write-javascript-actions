@@ -28,7 +28,7 @@ Follow [this guide](https://help.github.com/en/actions/automating-your-workflow-
 
 ### What's next?
 
-- [Take another GitHub Skills course](https://github.com/githubskills).
+- [Take another GitHub Skills course](https://github.com/skills).
 - We'd love to hear what you thought of this course in our [discussion board](https://github.com/orgs/skills/discussions/categories/write-javascript-actions).
 - [Read the GitHub Getting Started docs](https://docs.github.com/en/get-started).
 - To find projects to contribute to, check out [GitHub Explore](https://github.com/explore).
