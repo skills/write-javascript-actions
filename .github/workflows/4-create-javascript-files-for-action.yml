@@ -54,7 +54,9 @@ jobs:
 
       - name: Dump GitHub comment context
         id: github_comment_step
-        run: echo '${{ toJSON(github.event) }}'
+        env:
+          COMMENT_CONTEXT: ${{ toJson(github.event) }}
+        run: echo "$COMMENT_CONTEXT"
 
       # Check if action JavaScript exists in the expected location.
       - name: Check file existence

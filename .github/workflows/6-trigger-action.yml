@@ -57,7 +57,9 @@ jobs:
 
       - name: Dump GitHub comment context
         id: github_comment_step
-        run: echo '${{ toJSON(github.event) }}'
+        env:
+          COMMENT_CONTEXT: ${{ toJson(github.event) }}
+        run: echo "$COMMENT_CONTEXT"
 
       # Update README from step 6 to step X.
       - name: Update to step X
