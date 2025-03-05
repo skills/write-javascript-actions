@@ -47,7 +47,7 @@ Once you have the necessary tools installed locally, follow these steps to begin
 1. Open the **Terminal** (Mac and Linux) or **Command Prompt** (Windows) on your local machine
 2. Clone your Skills repo to your local machine:
    ```shell
-   git clone <this repository URL>.git
+   git clone <this repository URL>
    ```
 3. Navigate to the folder you just cloned:
    ```shell
