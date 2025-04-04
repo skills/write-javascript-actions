@@ -1,0 +1,6 @@
+steps:
+    - uses: actions/javascript-action@v1
+    - uses: actions/javascript-action@v1.0.1
+    - uses: actions/javascript-action@v1-beta
+
+    
