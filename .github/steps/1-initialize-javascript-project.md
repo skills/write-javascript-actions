@@ -20,7 +20,7 @@ Your repository can contain multiple **workflow** files that carry out a wide va
 
 _In our case, we will use this one **workflow** file for many things, which leads us to break this convention for teaching purposes._
 
-Read more about [workflows](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/configuring-a-workflow#choosing-the-type-of-actions-for-your-workflow)
+Read more about [workflows](https://docs.github.com/en/actions/writing-workflows/about-workflows)
 
 ## On to your development environment
 
