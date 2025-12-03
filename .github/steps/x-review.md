@@ -16,6 +16,7 @@ Here's a recap of your accomplishments:
 ### What's next?
 
 - Check out the other [GitHub Skills exercises](https://learn.github.com/skills).
+  - Try the follow-up exercise to this one: [Create AI-Powered Actions](https://github.com/skills/create-ai-powered-actions)
 - Try using your Dad Jokes action in your other repositories to add some humor to your workflows!
 
 - **Create your next action** using GitHub's template repositories with best practices like tests and linting already built-in:
