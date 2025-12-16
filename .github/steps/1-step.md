@@ -2,6 +2,12 @@
 
 Imagine you’ve got a repetitive task you’d love to automate. You've searched through the [**GitHub Marketplace**](https://github.com/marketplace?type=actions) for existing actions that might help, you come up empty-handed…
 
+> [!NOTE]
+> If you want to learn more check out these resources:
+> - [Understanding GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions)
+> - [Events that trigger workflows](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows)
+> - [Actions runner pricing](https://docs.github.com/en/billing/reference/actions-runner-pricing)
+
 Maybe that’s because your task is a bit _too_ unique 😆
 
 **GENERATING DAD JOKES**! 🎭
