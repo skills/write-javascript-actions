@@ -22,3 +22,7 @@ Here's a recap of your accomplishments:
 - **Create your next action** using GitHub's template repositories with best practices like tests and linting already built-in:
   - [actions/javascript-action](https://github.com/actions/javascript-action) template repository
   - [actions/typescript-action](https://github.com/actions/typescript-action) template repository
+
+### Actions running pricing
+
+[Actions runner pricing](https://docs.github.com/en/billing/reference/actions-runner-pricing)
