@@ -9,7 +9,7 @@ _Write your own GitHub JavaScript Action and automate customized tasks unique to
 - **What you'll build**: A Javascript based GitHub Action that fetches random dad jokes and exposes them as an output.
 - **Prerequisites**:
 
-  - You should be familiar with GitHub and GitHub Actions. We recommend taking the [Hello GitHub Actions](https://github.com/skills-dev/hello-github-actions) exercise first.
+  - You should be familiar with GitHub and GitHub Actions. We recommend taking the [Hello GitHub Actions](https://github.com/skills/hello-github-actions) exercise first.
 
 - **How long**: This exercise takes less than 1 hour to complete.
 
@@ -26,7 +26,7 @@ In this exercise, you will:
 
 Simply copy the exercise to your account, then give your favorite Octocat (Mona) **about 20 seconds** to prepare the first lesson, then **refresh the page**.
 
-[![](https://img.shields.io/badge/Copy%20Exercise-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/new?template_owner=skills-dev&template_name=write-javascript-actions&owner=%40me&name=skills-write-javascript-actions&description=Exercise:+Write+JavaScript+Actions&visibility=public)
+[![](https://img.shields.io/badge/Copy%20Exercise-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/new?template_owner=skills&template_name=write-javascript-actions&owner=%40me&name=skills-write-javascript-actions&description=Exercise:+Write+JavaScript+Actions&visibility=public)
 
 <details>
 <summary>Having trouble? 🤷</summary><br/>
