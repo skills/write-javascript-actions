@@ -1,0 +1,204 @@
+name: Step 1
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "package.json"
+      - ".gitignore"
+
+permissions:
+  contents: read
+  actions: write
+  issues: write
+
+env:
+  STEP_2_FILE: ".github/steps/2-step.md"
+
+jobs:
+  find_exercise:
+    if: github.run_number != 1
+    name: Find Exercise Issue
+    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.7.0
+
+  check_step_work:
+    name: Check step work
+    runs-on: ubuntu-latest
+    needs: [find_exercise]
+    env:
+      ISSUE_REPOSITORY: ${{ github.repository }}
+      ISSUE_NUMBER: ${{ needs.find_exercise.outputs.issue-number }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Get response templates
+        uses: actions/checkout@v5
+        with:
+          repository: skills/exercise-toolkit
+          path: exercise-toolkit
+          ref: v0.7.0
+
+      - name: Find last comment
+        id: find-last-comment
+        uses: peter-evans/find-comment@v3
+        with:
+          repository: ${{ env.ISSUE_REPOSITORY }}
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          direction: last
+
+      - name: Update comment - checking work
+        uses: GrantBirki/comment@v2.1.1
+        with:
+          repository: ${{ env.ISSUE_REPOSITORY }}
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          comment-id: ${{ steps.find-last-comment.outputs.comment-id }}
+          file: exercise-toolkit/markdown-templates/step-feedback/checking-work.md
+          edit-mode: replace
+
+      # START: Check practical exercise
+
+      - name: Check if package.json file exists
+        id: check-package-json
+        continue-on-error: true
+        uses: skills/exercise-toolkit/actions/file-exists@v0.7.0
+        with:
+          file: package.json
+
+      - name: Check for @actions/core dependency
+        id: check-core-dep
+        continue-on-error: true
+        uses: skills/action-keyphrase-checker@v1
+        with:
+          text-file: package.json
+          keyphrase: "@actions/core"
+
+      - name: Check for request dependency
+        id: check-request-dep
+        continue-on-error: true
+        uses: skills/action-keyphrase-checker@v1
+        with:
+          text-file: package.json
+          keyphrase: "request"
+
+      - name: Check for request-promise dependency
+        id: check-request-promise-dep
+        continue-on-error: true
+        uses: skills/action-keyphrase-checker@v1
+        with:
+          text-file: package.json
+          keyphrase: "request-promise"
+
+      - name: Check for @vercel/ncc dependency
+        id: check-ncc-dep
+        continue-on-error: true
+        uses: skills/action-keyphrase-checker@v1
+        with:
+          text-file: package.json
+          keyphrase: "@vercel/ncc"
+
+      - name: Check .gitignore excludes node_modules
+        id: check-gitignore
+        continue-on-error: true
+        uses: skills/action-keyphrase-checker@v1
+        with:
+          text-file: .gitignore
+          keyphrase: "node_modules/"
+
+      - name: Check node_modules is not committed
+        id: check-node-modules-not-committed
+        continue-on-error: true
+        run: |
+          if [ -d "node_modules" ] || find . -name "node_modules" -type d | grep -q .; then
+            found_dirs=$(find . -name "node_modules" -type d)
+            echo "❌ Found node_modules directory in repository"
+            echo "$found_dirs"
+            echo "STEP_MESSAGE=Found node_modules committed to repository. Remove it from the repository." >> $GITHUB_OUTPUT
+            exit 1
+          else
+            echo "✅ No node_modules directory found in repository"
+            echo "STEP_MESSAGE=node_modules properly excluded from repository" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Update comment - step results
+        uses: GrantBirki/comment@v2.1.1
+        with:
+          repository: ${{ env.ISSUE_REPOSITORY }}
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          comment-id: ${{ steps.find-last-comment.outputs.comment-id }}
+          edit-mode: replace
+          file: exercise-toolkit/markdown-templates/step-feedback/step-results-table.md
+          vars: |
+            step_number: 1
+            results_table:
+              - description: "package.json file exists"
+                passed: ${{ steps.check-package-json.outcome == 'success' }}
+              - description: "@actions/core dependency present"
+                passed: ${{ steps.check-core-dep.outcome == 'success' }}
+              - description: "request dependency present"
+                passed: ${{ steps.check-request-dep.outcome == 'success' }}
+              - description: "request-promise dependency present"
+                passed: ${{ steps.check-request-promise-dep.outcome == 'success' }}
+              - description: "@vercel/ncc dependency present"
+                passed: ${{ steps.check-ncc-dep.outcome == 'success' }}
+              - description: ".gitignore excludes node_modules/"
+                passed: ${{ steps.check-gitignore.outcome == 'success' }}
+              - description: "${{ steps.check-node-modules-not-committed.outputs.STEP_MESSAGE }}"
+                passed: ${{ steps.check-node-modules-not-committed.outcome == 'success' }}
+
+      # END: Check practical exercise
+
+      - name: Fail job if not all checks passed
+        if: contains(steps.*.outcome, 'failure')
+        run: exit 1
+
+  post_next_step_content:
+    name: Post next step content
+    needs: [find_exercise, check_step_work]
+    runs-on: ubuntu-latest
+    env:
+      ISSUE_REPOSITORY: ${{ github.repository }}
+      ISSUE_NUMBER: ${{ needs.find_exercise.outputs.issue-number }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Get response templates
+        uses: actions/checkout@v5
+        with:
+          repository: skills/exercise-toolkit
+          path: exercise-toolkit
+          ref: v0.7.0
+
+      - name: Create comment - step finished
+        uses: GrantBirki/comment@v2.1.1
+        with:
+          repository: ${{ env.ISSUE_REPOSITORY }}
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          file: exercise-toolkit/markdown-templates/step-feedback/step-finished-prepare-next-step.md
+          vars: |
+            next_step_number: 2
+
+      - name: Create comment - add step content
+        uses: GrantBirki/comment@v2.1.1
+        with:
+          repository: ${{ env.ISSUE_REPOSITORY }}
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          file: ${{ env.STEP_2_FILE }}
+
+      - name: Create comment - watching for progress
+        uses: GrantBirki/comment@v2.1.1
+        with:
+          repository: ${{ env.ISSUE_REPOSITORY }}
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          file: exercise-toolkit/markdown-templates/step-feedback/watching-for-progress.md
+
+      - name: Disable current workflow and enable next one
+        run: |
+          gh workflow disable "${{github.workflow}}"
+          gh workflow enable "Step 2"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
