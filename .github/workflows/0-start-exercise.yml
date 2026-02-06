@@ -19,7 +19,7 @@ jobs:
     if: |
       !github.event.repository.is_template
     name: Start Exercise
-    uses: skills/exercise-toolkit/.github/workflows/start-exercise.yml@v0.7.3
+    uses: skills/exercise-toolkit/.github/workflows/start-exercise.yml@v0.8.0
     with:
       exercise-title: "Write JavaScript Actions"
       intro-message: "Learn to create and use custom JavaScript actions in your GitHub workflows"
