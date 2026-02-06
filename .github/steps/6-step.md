@@ -10,7 +10,7 @@ The only thing left to do is test it out!
 
 1. Monitor the **Actions** tab for the `Joke Action` workflow to complete:
 
-   <img width="400" alt="SCR-20251113-kntg" src="https://github.com/user-attachments/assets/992da295-0123-4688-a068-d289967f2455" />
+   <img width="400" alt="SCR-20251113-kntg" src="../images/joke-action-workflow-run.png" />
 
 
 1. Return to the issue and you should see a new comment posted by `github-actions[bot]` containing a random dad joke!
