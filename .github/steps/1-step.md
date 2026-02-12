@@ -6,7 +6,7 @@ Maybe that’s because your task is a bit _too_ unique 😆
 
 **GENERATING DAD JOKES**! 🎭
 
-<img width="600" alt="dadjoke-mona" src="https://github.com/user-attachments/assets/46b6b931-8d1f-4a01-88f4-4568704039a0" />
+<img width="600" alt="dadjoke-mona" src="../images/dadjoke-mona.png" />
 
 Since no pre-built action exists for your quirky automation needs, it's time to roll up your sleeves and create your own!
 
