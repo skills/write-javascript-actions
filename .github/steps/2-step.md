@@ -21,24 +21,24 @@ Let's create the source files and implement the logic for your action.
 1. Create `src/joke.js` file to hold the logic for fetching a joke from the `icanhazdadjoke.com` API:
 
    ```js
-   const request = require("request-promise");
+  import request from "request-promise";
 
-   const options = {
-     method: "GET",
-     uri: "https://icanhazdadjoke.com/",
-     headers: {
-       Accept: "application/json",
-       "User-Agent": "Writing JavaScript action GitHub Skills exercise.",
-     },
-     json: true,
-   };
+  const options = {
+    method: "GET",
+    uri: "https://icanhazdadjoke.com/",
+    headers: {
+      Accept: "application/json",
+      "User-Agent": "Writing JavaScript action GitHub Skills exercise.",
+    },
+    json: true,
+  };
 
-   async function getJoke() {
-     const res = await request(options);
-     return res.joke;
-   }
+  async function getJoke() {
+    const res = await request(options);
+    return res.joke;
+  }
 
-   module.exports = getJoke;
+  export default getJoke; 
    ```
 
    The `getJoke` function makes an HTTP GET request to the `icanhazdadjoke.com` API and returns a random dad joke.
@@ -48,16 +48,16 @@ Let's create the source files and implement the logic for your action.
 1. Create `src/main.js` that will be the main entry point for your action:
 
    ```js
-   const getJoke = require("./joke");
-   const core = require("@actions/core");
-
-   async function run() {
-     const joke = await getJoke();
-     console.log(joke);
-     core.setOutput("joke", joke);
-   }
-
-   run();
+  import getJoke from "./joke.js";
+  import * as core from "@actions/core";
+  
+  async function run() {
+    const joke = await getJoke();
+    console.log(joke);
+    core.setOutput("joke", joke);
+  }
+  
+  run(); 
    ```
 
    We call the `getJoke` function and follow up with `core.setOutput()` to set the `joke` output of your GitHub Action.
