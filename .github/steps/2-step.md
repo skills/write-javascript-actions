@@ -7,10 +7,9 @@ Nice! Now that we have the project initialized and dependencies installed, it's 
 The `@actions/core` library is the main library from the [GitHub Actions Toolkit](https://github.com/actions/toolkit), a collection of packages for building JavaScript GitHub Actions. It provides essential methods to interact with the GitHub Actions runtime environment, accept action inputs, and produce outputs for other workflow steps.
 
 > [!TIP]
-> The [GitHub Actions Toolkit](https://github.com/actions/toolkit) includes other useful libraries like `@actions/github` for interacting with the GitHub API and `@actions/artifact` for uploading and downloading artifacts. 
-> 
+> The [GitHub Actions Toolkit](https://github.com/actions/toolkit) includes other useful libraries like `@actions/github` for interacting with the GitHub API and `@actions/artifact` for uploading and downloading artifacts.
+>
 > Visit the [actions/toolkit](https://github.com/actions/toolkit) repository for more.
-
 
 ### ⌨️ Activity: Implement the Dad Jokes Action
 
@@ -21,7 +20,7 @@ Let's create the source files and implement the logic for your action.
 1. Create `src/joke.js` file to hold the logic for fetching a joke from the `icanhazdadjoke.com` API:
 
    ```js
-   const request = require("request-promise");
+   import request from "request-promise";
 
    const options = {
      method: "GET",
@@ -38,7 +37,7 @@ Let's create the source files and implement the logic for your action.
      return res.joke;
    }
 
-   module.exports = getJoke;
+   export default getJoke;
    ```
 
    The `getJoke` function makes an HTTP GET request to the `icanhazdadjoke.com` API and returns a random dad joke.
@@ -48,8 +47,8 @@ Let's create the source files and implement the logic for your action.
 1. Create `src/main.js` that will be the main entry point for your action:
 
    ```js
-   const getJoke = require("./joke");
-   const core = require("@actions/core");
+   import getJoke from "./joke.js";
+   import * as core from "@actions/core";
 
    async function run() {
      const joke = await getJoke();
