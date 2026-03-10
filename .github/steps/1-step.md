@@ -48,7 +48,7 @@ Now that your Codespace is ready, let's initialize a new Node.js project and ins
 1. Within your GitHub Codespace terminal window initialize a new project:
 
    ```sh
-   npm init -y
+   npm init -y && npm pkg set type=module
    ```
 
 1. Install the required dependencies:
