@@ -7,10 +7,9 @@ Nice! Now that we have the project initialized and dependencies installed, it's 
 The `@actions/core` library is the main library from the [GitHub Actions Toolkit](https://github.com/actions/toolkit), a collection of packages for building JavaScript GitHub Actions. It provides essential methods to interact with the GitHub Actions runtime environment, accept action inputs, and produce outputs for other workflow steps.
 
 > [!TIP]
-> The [GitHub Actions Toolkit](https://github.com/actions/toolkit) includes other useful libraries like `@actions/github` for interacting with the GitHub API and `@actions/artifact` for uploading and downloading artifacts. 
-> 
+> The [GitHub Actions Toolkit](https://github.com/actions/toolkit) includes other useful libraries like `@actions/github` for interacting with the GitHub API and `@actions/artifact` for uploading and downloading artifacts.
+>
 > Visit the [actions/toolkit](https://github.com/actions/toolkit) repository for more.
-
 
 ### ⌨️ Activity: Implement the Dad Jokes Action
 
@@ -20,26 +19,26 @@ Let's create the source files and implement the logic for your action.
 
 1. Create `src/joke.js` file to hold the logic for fetching a joke from the `icanhazdadjoke.com` API:
 
-    ```js
-    import request from "request-promise";
+   ```js
+   import request from "request-promise";
 
-    const options = {
-      method: "GET",
-      uri: "https://icanhazdadjoke.com/",
-      headers: {
-        Accept: "application/json",
-        "User-Agent": "Writing JavaScript action GitHub Skills exercise.",
-      },
-      json: true,
-    };
+   const options = {
+     method: "GET",
+     uri: "https://icanhazdadjoke.com/",
+     headers: {
+       Accept: "application/json",
+       "User-Agent": "Writing JavaScript action GitHub Skills exercise.",
+     },
+     json: true,
+   };
 
-    async function getJoke() {
-      const res = await request(options);
-      return res.joke;
-    }
+   async function getJoke() {
+     const res = await request(options);
+     return res.joke;
+   }
 
-    export default getJoke; 
-    ```
+   export default getJoke;
+   ```
 
    The `getJoke` function makes an HTTP GET request to the `icanhazdadjoke.com` API and returns a random dad joke.
 
@@ -47,20 +46,20 @@ Let's create the source files and implement the logic for your action.
 
 1. Create `src/main.js` that will be the main entry point for your action:
 
-    ```js
-    import getJoke from "./joke.js";
-    import * as core from "@actions/core";
+   ```js
+   import getJoke from "./joke.js";
+   import * as core from "@actions/core";
 
-    async function run() {
-      const joke = await getJoke();
-      console.log(joke);
-      core.setOutput("joke", joke);
-    }
+   async function run() {
+     const joke = await getJoke();
+     console.log(joke);
+     core.setOutput("joke", joke);
+   }
 
-    run(); 
-    ```
+   run();
+   ```
 
-    We call the `getJoke` function and follow up with `core.setOutput()` to set the `joke` output of your GitHub Action.
+   We call the `getJoke` function and follow up with `core.setOutput()` to set the `joke` output of your GitHub Action.
 
 1. Run the action locally to verify it works:
 
