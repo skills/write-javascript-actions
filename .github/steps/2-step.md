@@ -60,7 +60,7 @@ Let's create the source files and implement the logic for your action.
     run(); 
     ```
 
-   We call the `getJoke` function and follow up with `core.setOutput()` to set the `joke` output of your GitHub Action.
+    We call the `getJoke` function and follow up with `core.setOutput()` to set the `joke` output of your GitHub Action.
 
 1. Run the action locally to verify it works:
 
